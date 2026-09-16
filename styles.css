@@ -11,6 +11,10 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   min-height: 100vh;
   min-height: 100svh;
@@ -69,10 +73,81 @@ h1 {
   line-height: 1.45;
 }
 
+.work-link {
+  align-self: flex-start;
+  margin-top: 2.25rem;
+  padding: 0.9rem 1.35rem;
+  border: 1px solid #56816a;
+  border-radius: 999px;
+  color: #202522;
+  font-size: 0.95rem;
+  font-weight: 650;
+  text-decoration: none;
+  transition: background-color 180ms ease, color 180ms ease, transform 180ms ease;
+}
+
+.work-link:hover {
+  color: #f5f3ee;
+  background: #56816a;
+  transform: translateY(-2px);
+}
+
+.work-link:focus-visible {
+  outline: 3px solid rgba(86, 129, 106, 0.35);
+  outline-offset: 4px;
+}
+
+.selected-work {
+  width: min(100% - 3rem, 72rem);
+  margin-inline: auto;
+  padding-block: 7rem 9rem;
+  scroll-margin-top: 2rem;
+}
+
+.selected-work h2 {
+  margin: 0;
+  font-size: clamp(2.75rem, 7vw, 5rem);
+  letter-spacing: -0.055em;
+  line-height: 1;
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 4rem;
+}
+
+.project-card {
+  min-height: 17rem;
+  padding: 2rem;
+  border: 1px solid rgba(86, 129, 106, 0.3);
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.28);
+}
+
+.project-card h3 {
+  margin: 0;
+  font-size: 1.5rem;
+  letter-spacing: -0.025em;
+}
+
+.project-card p {
+  max-width: 22ch;
+  margin: 1rem 0 0;
+  color: #4e5b54;
+  line-height: 1.65;
+}
+
 @media (max-width: 40rem) {
   .intro {
     width: min(100% - 2.5rem, 72rem);
     padding-block: 3rem;
+  }
+
+  .selected-work {
+    width: min(100% - 2.5rem, 72rem);
+    padding-block: 5rem 6rem;
   }
 
   .eyebrow {
@@ -89,5 +164,30 @@ h1 {
   .statement {
     margin-top: 1.75rem;
     font-size: 1.3rem;
+  }
+
+  .work-link {
+    margin-top: 1.75rem;
+  }
+
+  .project-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-top: 2.5rem;
+  }
+
+  .project-card {
+    min-height: 13rem;
+    padding: 1.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .work-link {
+    transition: none;
   }
 }
