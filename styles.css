@@ -24,6 +24,49 @@ body {
     #f5f3ee;
 }
 
+.language-switcher {
+  position: absolute;
+  inset-block-start: 2rem;
+  inset-inline-end: max(1.5rem, calc((100% - 72rem) / 2));
+  z-index: 1;
+  display: flex;
+  gap: 0.65rem;
+  align-items: center;
+  color: #4e5b54;
+  font-size: 0.9rem;
+  font-weight: 650;
+}
+
+.language-switcher a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.language-switcher a:hover {
+  color: #56816a;
+}
+
+.language-switcher a[aria-current="page"] {
+  color: #202522;
+  text-decoration: underline;
+  text-decoration-color: #56816a;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.35em;
+}
+
+.language-switcher a:focus-visible {
+  outline: 3px solid rgba(86, 129, 106, 0.35);
+  outline-offset: 4px;
+}
+
+:lang(he) {
+  font-family: Arial, "Arial Hebrew", sans-serif;
+}
+
+html[dir="rtl"] body {
+  text-align: right;
+}
+
 .intro {
   display: flex;
   min-height: 100vh;
@@ -163,6 +206,12 @@ h1 {
   padding-block: 3rem 8rem;
 }
 
+.project-language-switcher {
+  position: static;
+  justify-content: flex-end;
+  margin-bottom: 2.5rem;
+}
+
 .back-link {
   display: inline-block;
   color: #3d4541;
@@ -207,7 +256,7 @@ h1 {
 }
 
 .project-details section {
-  padding-right: 1.5rem;
+  padding-inline-end: 1.5rem;
 }
 
 .project-details h2 {
@@ -226,6 +275,16 @@ h1 {
   .intro {
     width: min(100% - 2.5rem, 72rem);
     padding-block: 3rem;
+  }
+
+  .language-switcher {
+    inset-block-start: 1.5rem;
+    inset-inline-end: 1.25rem;
+  }
+
+  .project-language-switcher {
+    position: static;
+    margin-bottom: 2rem;
   }
 
   .selected-work {
@@ -279,7 +338,7 @@ h1 {
   }
 
   .project-details section {
-    padding-right: 0;
+    padding-inline-end: 0;
   }
 }
 
