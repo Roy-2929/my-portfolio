@@ -192,6 +192,18 @@ h1 {
   outline-offset: 4px;
 }
 
+.riseup-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.riseup-card img {
+  display: block;
+  width: min(100%, 12.5rem);
+  height: auto;
+}
+
 .project-card h3 {
   margin: 0;
   font-size: 1.5rem;
