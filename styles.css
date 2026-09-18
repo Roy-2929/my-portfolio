@@ -8,7 +8,12 @@
 
 :root {
   color-scheme: light;
-  font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI",
+  font-family:
+    Inter,
+    ui-sans-serif,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
     sans-serif;
   color: #202522;
   background: #f5f3ee;
@@ -29,7 +34,11 @@ body {
   min-height: 100svh;
   margin: 0;
   background:
-    radial-gradient(circle at 83% 17%, rgba(169, 199, 181, 0.26), transparent 28rem),
+    radial-gradient(
+      circle at 83% 17%,
+      rgba(169, 199, 181, 0.26),
+      transparent 28rem
+    ),
     #f5f3ee;
 }
 
@@ -131,7 +140,10 @@ h1 {
   font-size: 0.95rem;
   font-weight: 650;
   text-decoration: none;
-  transition: background-color 180ms ease, color 180ms ease, transform 180ms ease;
+  transition:
+    background-color 180ms ease,
+    color 180ms ease,
+    transform 180ms ease;
 }
 
 .work-link:hover {
@@ -178,7 +190,10 @@ h1 {
 .project-card-link {
   color: inherit;
   text-decoration: none;
-  transition: background-color 180ms ease, border-color 180ms ease, transform 180ms ease;
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease,
+    transform 180ms ease;
 }
 
 .project-card-link:hover {
@@ -192,16 +207,66 @@ h1 {
   outline-offset: 4px;
 }
 
-.riseup-card {
+.project-card-preview {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.riseup-card img {
+.project-card-preview-logo {
   display: block;
   width: min(100%, 12.5rem);
   height: auto;
+  transition: opacity 200ms ease;
+}
+
+.project-card-preview-text {
+  position: absolute;
+  inset-inline: 2rem;
+  margin: 0;
+  color: #202522;
+  font-size: 1.15rem;
+  font-weight: 650;
+  line-height: 1.45;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 200ms ease;
+}
+
+@media (hover: hover) {
+  .project-card-preview:hover .project-card-preview-logo {
+    opacity: 0.15;
+  }
+
+  .project-card-preview:hover .project-card-preview-text {
+    opacity: 1;
+  }
+}
+
+.project-card-preview:focus-visible .project-card-preview-logo {
+  opacity: 0.15;
+}
+
+.project-card-preview:focus-visible .project-card-preview-text {
+  opacity: 1;
+}
+
+@media (hover: none) {
+  .project-card-preview {
+    gap: 1.5rem;
+    flex-direction: column;
+  }
+
+  .project-card-preview .project-card-preview-logo,
+  .project-card-preview:focus-visible .project-card-preview-logo {
+    opacity: 1;
+  }
+
+  .project-card-preview-text {
+    position: static;
+    opacity: 1;
+  }
 }
 
 .project-card h3 {
@@ -268,7 +333,9 @@ h1 {
   --image-available-width: calc(100vw - 3rem);
   width: 100%;
   margin: 0 0 4rem;
-  transition: width 360ms ease, margin-inline-start 360ms ease;
+  transition:
+    width 360ms ease,
+    margin-inline-start 360ms ease;
 }
 
 .project-image.is-expanded {
@@ -479,6 +546,8 @@ h1 {
 
   .work-link,
   .project-card-link,
+  .project-card-preview-logo,
+  .project-card-preview-text,
   .project-image {
     transition: none;
   }
@@ -507,6 +576,11 @@ html[lang="he"] :where(a, button) {
 }
 
 html[lang="he"] :lang(en) {
-  font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI",
+  font-family:
+    Inter,
+    ui-sans-serif,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
     sans-serif;
 }
