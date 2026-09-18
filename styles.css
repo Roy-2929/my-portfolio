@@ -251,6 +251,48 @@ h1 {
   line-height: 1.5;
 }
 
+.project-image {
+  width: 100%;
+  margin: 0 0 4rem;
+}
+
+.project-image > a {
+  display: block;
+}
+
+.project-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.project-image figcaption {
+  display: flex;
+  gap: 0.75rem 1.5rem;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-top: 1rem;
+  color: #4e5b54;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.project-image figcaption a {
+  flex: none;
+  color: #3d4541;
+  font-weight: 650;
+  text-underline-offset: 0.3em;
+}
+
+.project-image figcaption a:hover {
+  color: #56816a;
+}
+
+.project-image a:focus-visible {
+  outline: 3px solid rgba(86, 129, 106, 0.35);
+  outline-offset: 4px;
+}
+
 .project-details {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -334,6 +376,15 @@ h1 {
 
   .project-header {
     padding-block: 4.5rem;
+  }
+
+  .project-image {
+    margin-bottom: 3rem;
+  }
+
+  .project-image figcaption {
+    align-items: flex-start;
+    flex-direction: column;
   }
 
   .project-details {
