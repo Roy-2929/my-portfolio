@@ -358,6 +358,11 @@ h1 {
   padding-inline-end: 1.5rem;
 }
 
+.project-details section:only-child {
+  grid-column: 1 / -1;
+  padding-inline-end: 0;
+}
+
 .project-details h2 {
   margin: 0;
   font-size: 1.35rem;
@@ -368,6 +373,10 @@ h1 {
   margin: 1rem 0 0;
   color: #4e5b54;
   line-height: 1.7;
+}
+
+.project-details .project-image {
+  margin-top: 2.5rem;
 }
 
 @media (max-width: 40rem) {
