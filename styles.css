@@ -24,6 +24,7 @@ html {
 }
 
 body {
+  overflow-x: hidden;
   min-height: 100vh;
   min-height: 100svh;
   margin: 0;
@@ -252,18 +253,81 @@ h1 {
 }
 
 .project-image {
+  --image-available-width: calc(100vw - 3rem);
   width: 100%;
   margin: 0 0 4rem;
+  transition: width 360ms ease, margin-inline-start 360ms ease;
 }
 
-.project-image > a {
+.project-image.is-expanded {
+  width: var(--image-available-width);
+  margin-inline-start: calc((100% - var(--image-available-width)) / 2);
+}
+
+.project-image-toggle {
+  position: relative;
   display: block;
+  width: 100%;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  border-radius: 0;
+  color: inherit;
+  background: transparent;
+  cursor: zoom-in;
+  font: inherit;
+  text-align: inherit;
+}
+
+.project-image.is-expanded .project-image-toggle {
+  cursor: zoom-out;
 }
 
 .project-image img {
   display: block;
   width: 100%;
   height: auto;
+}
+
+.project-image-icon {
+  position: absolute;
+  inset-block-start: 1rem;
+  inset-inline-end: 1rem;
+  display: grid;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  place-items: center;
+  color: #202522;
+  background: rgba(245, 243, 238, 0.92);
+  box-shadow: 0 0.2rem 0.8rem rgba(32, 37, 34, 0.18);
+}
+
+.project-image-icon svg {
+  width: 1.35rem;
+  height: 1.35rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2;
+}
+
+.project-image-icon .reduce-icon,
+.project-image.is-expanded .expand-icon {
+  display: none;
+}
+
+.project-image.is-expanded .reduce-icon {
+  display: block;
+}
+
+.project-image-toggle:disabled {
+  cursor: default;
+}
+
+.project-image-toggle:disabled .project-image-icon {
+  display: none;
 }
 
 .project-image figcaption {
@@ -277,20 +341,9 @@ h1 {
   line-height: 1.6;
 }
 
-.project-image figcaption a {
-  flex: none;
-  color: #3d4541;
-  font-weight: 650;
-  text-underline-offset: 0.3em;
-}
-
-.project-image figcaption a:hover {
-  color: #56816a;
-}
-
-.project-image a:focus-visible {
+.project-image-toggle:focus-visible {
   outline: 3px solid rgba(86, 129, 106, 0.35);
-  outline-offset: 4px;
+  outline-offset: 3px;
 }
 
 .project-details {
@@ -379,6 +432,7 @@ h1 {
   }
 
   .project-image {
+    --image-available-width: calc(100vw - 2.5rem);
     margin-bottom: 3rem;
   }
 
@@ -403,7 +457,8 @@ h1 {
   }
 
   .work-link,
-  .project-card-link {
+  .project-card-link,
+  .project-image {
     transition: none;
   }
 }
