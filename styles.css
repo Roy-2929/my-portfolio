@@ -317,6 +317,41 @@ h1 {
   line-height: 1.65;
 }
 
+.contact-links {
+  display: flex;
+  width: min(100% - 3rem, 72rem);
+  gap: 1.25rem 2.5rem;
+  align-items: center;
+  justify-content: space-between;
+  margin-inline: auto;
+  padding-block: 2.5rem 4rem;
+  border-top: 1px solid rgba(86, 129, 106, 0.3);
+}
+
+.contact-link {
+  color: #202522;
+  font-weight: 650;
+  text-decoration-color: #56816a;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.35em;
+  transition: color 180ms ease;
+}
+
+.contact-link:hover {
+  color: #56816a;
+}
+
+.contact-link:focus-visible {
+  border-radius: 0.15rem;
+  outline: 3px solid rgba(86, 129, 106, 0.35);
+  outline-offset: 5px;
+}
+
+.email-link {
+  direction: ltr;
+  unicode-bidi: isolate;
+}
+
 .project-page {
   width: min(100% - 3rem, 72rem);
   margin-inline: auto;
@@ -514,6 +549,13 @@ h1 {
     padding-block: 5rem 6rem;
   }
 
+  .contact-links {
+    width: min(100% - 2.5rem, 72rem);
+    align-items: flex-start;
+    flex-direction: column;
+    padding-block: 2rem 3rem;
+  }
+
   .project-page {
     width: min(100% - 2.5rem, 72rem);
     padding-block: 2rem 5rem;
@@ -580,6 +622,7 @@ h1 {
   }
 
   .work-link,
+  .contact-link,
   .project-card-link,
   .project-card-preview::before,
   .project-card-preview-logo,
