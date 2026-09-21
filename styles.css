@@ -212,9 +212,23 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: center;
+  isolation: isolate;
+}
+
+.project-card-preview::before {
+  position: absolute;
+  z-index: 0;
+  inset: -1px;
+  border-radius: inherit;
+  background: #222222;
+  opacity: 0;
+  content: "";
+  transition: opacity 200ms ease;
 }
 
 .project-card-preview-logo {
+  position: relative;
+  z-index: 1;
   display: block;
   width: min(100%, 12.5rem);
   height: auto;
@@ -223,9 +237,14 @@ h1 {
 
 .project-card-preview-text {
   position: absolute;
-  inset-inline: 2rem;
+  z-index: 1;
+  inset: 0;
+  display: flex;
+  padding: 2rem;
+  align-items: center;
+  justify-content: center;
   margin: 0;
-  color: #202522;
+  color: #ffffff;
   font-size: 1.15rem;
   font-weight: 650;
   line-height: 1.45;
@@ -235,8 +254,12 @@ h1 {
 }
 
 @media (hover: hover) {
+  .project-card-preview:hover::before {
+    opacity: 1;
+  }
+
   .project-card-preview:hover .project-card-preview-logo {
-    opacity: 0.15;
+    opacity: 0;
   }
 
   .project-card-preview:hover .project-card-preview-text {
@@ -244,8 +267,12 @@ h1 {
   }
 }
 
+.project-card-preview:focus-visible::before {
+  opacity: 1;
+}
+
 .project-card-preview:focus-visible .project-card-preview-logo {
-  opacity: 0.15;
+  opacity: 0;
 }
 
 .project-card-preview:focus-visible .project-card-preview-text {
@@ -253,6 +280,11 @@ h1 {
 }
 
 @media (hover: none) {
+  .project-card-preview::before,
+  .project-card-preview:focus-visible::before {
+    opacity: 0;
+  }
+
   .project-card-preview {
     gap: 1.5rem;
     flex-direction: column;
@@ -265,6 +297,9 @@ h1 {
 
   .project-card-preview-text {
     position: static;
+    display: block;
+    padding: 0;
+    color: #202522;
     opacity: 1;
   }
 }
@@ -546,6 +581,7 @@ h1 {
 
   .work-link,
   .project-card-link,
+  .project-card-preview::before,
   .project-card-preview-logo,
   .project-card-preview-text,
   .project-image {
