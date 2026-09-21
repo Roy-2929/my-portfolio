@@ -382,7 +382,7 @@ h1 {
 }
 
 .project-header {
-  padding-block: clamp(5rem, 12vw, 9rem);
+  padding-block: clamp(5rem, 12vw, 9rem) clamp(3.5rem, 8vw, 6rem);
 }
 
 .project-header h1 {
@@ -406,6 +406,11 @@ h1 {
   transition:
     width 360ms ease,
     margin-inline-start 360ms ease;
+}
+
+.project-lead-image {
+  width: min(75%, 52rem);
+  margin-bottom: clamp(4rem, 9vw, 7rem);
 }
 
 .project-image.is-expanded {
@@ -496,20 +501,18 @@ h1 {
 }
 
 .project-details {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
   border-top: 1px solid rgba(86, 129, 106, 0.3);
   padding-top: 3rem;
 }
 
 .project-details section {
-  padding-inline-end: 1.5rem;
+  max-width: 52rem;
 }
 
-.project-details section:only-child {
-  grid-column: 1 / -1;
-  padding-inline-end: 0;
+.project-details section + section {
+  margin-top: clamp(3rem, 7vw, 5rem);
+  border-top: 1px solid rgba(86, 129, 106, 0.3);
+  padding-top: clamp(3rem, 7vw, 5rem);
 }
 
 .project-details h2 {
@@ -593,7 +596,7 @@ h1 {
   }
 
   .project-header {
-    padding-block: 4.5rem;
+    padding-block: 4.5rem 3.5rem;
   }
 
   .project-image {
@@ -601,19 +604,16 @@ h1 {
     margin-bottom: 3rem;
   }
 
+  .project-lead-image {
+    width: 100%;
+    margin-bottom: 4rem;
+  }
+
   .project-image figcaption {
     align-items: flex-start;
     flex-direction: column;
   }
 
-  .project-details {
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
-  }
-
-  .project-details section {
-    padding-inline-end: 0;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
