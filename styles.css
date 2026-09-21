@@ -531,6 +531,18 @@ h1 {
   margin-top: 2.5rem;
 }
 
+.project-details .project-insights-image {
+  width: min(100%, 50rem);
+  margin-inline: auto;
+  margin-bottom: 0;
+}
+
+.project-details .project-insights-image.is-expanded {
+  width: var(--image-available-width);
+  margin-inline-start: calc((100% - var(--image-available-width)) / 2);
+  margin-inline-end: 0;
+}
+
 @media (max-width: 40rem) {
   .intro {
     width: min(100% - 2.5rem, 72rem);
