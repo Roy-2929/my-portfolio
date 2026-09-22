@@ -423,7 +423,7 @@ h1 {
 .project-onboarding-image {
   --image-intrinsic-width: 1178px;
   width: min(100%, 52rem);
-  margin-bottom: clamp(4rem, 9vw, 7rem);
+  margin-bottom: 0;
 }
 
 .project-image.is-expanded {
@@ -568,6 +568,11 @@ h1 {
   margin-inline-end: 0;
 }
 
+.project-details .project-workshop-image {
+  width: min(100%, 900px);
+  margin: 2rem auto clamp(4rem, 9vw, 7rem);
+}
+
 @media (max-width: 40rem) {
   .intro {
     width: min(100% - 2.5rem, 72rem);
@@ -643,7 +648,7 @@ h1 {
 
   .project-onboarding-image {
     width: 100%;
-    margin-bottom: 4rem;
+    margin-bottom: 0;
   }
 
   .project-image figcaption {
