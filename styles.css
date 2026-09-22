@@ -534,15 +534,21 @@ h1 {
 }
 
 .project-details h2 {
+  width: min(100%, 43.75rem);
   margin: 0;
-  font-size: 1.35rem;
+  font-size: 26px;
   letter-spacing: -0.025em;
+  text-align: start;
 }
 
 .project-details p {
+  width: min(100%, 43.75rem);
   margin: 1rem 0 0;
   color: #4e5b54;
-  line-height: 1.7;
+  font-size: 20px;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+  text-align: start;
 }
 
 .project-details .project-image {
@@ -643,6 +649,14 @@ h1 {
   .project-image figcaption {
     align-items: flex-start;
     flex-direction: column;
+  }
+
+  .project-details h2 {
+    font-size: 22px;
+  }
+
+  .project-details p {
+    font-size: 18px;
   }
 
 }
