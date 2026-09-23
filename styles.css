@@ -188,7 +188,10 @@ h1 {
 }
 
 .project-card-link {
+  width: 100%;
   color: inherit;
+  font: inherit;
+  cursor: pointer;
   text-decoration: none;
   transition:
     background-color 180ms ease,
@@ -292,8 +295,21 @@ h1 {
   opacity: 1;
 }
 
+.project-card-preview:focus::before {
+  opacity: 1;
+}
+
+.project-card-preview:focus .project-card-preview-logo {
+  opacity: 0;
+}
+
+.project-card-preview:focus .project-card-preview-text {
+  opacity: 1;
+}
+
 @media (hover: none) {
   .project-card-preview::before,
+  .project-card-preview:focus::before,
   .project-card-preview:focus-visible::before {
     opacity: 0;
   }
@@ -304,6 +320,7 @@ h1 {
   }
 
   .project-card-preview .project-card-preview-logo,
+  .project-card-preview:focus .project-card-preview-logo,
   .project-card-preview:focus-visible .project-card-preview-logo {
     opacity: 1;
   }
