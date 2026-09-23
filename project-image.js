@@ -26,3 +26,63 @@ imageFigures.forEach((figure) => {
   window.addEventListener("resize", updateToggle);
   updateToggle();
 });
+
+document.querySelectorAll("[data-carousel]").forEach((carousel) => {
+  const viewport = carousel.querySelector("[data-carousel-viewport]");
+  const track = carousel.querySelector(".onboarding-carousel-track");
+  const slides = [...carousel.querySelectorAll(".onboarding-carousel-slide")];
+  const previousButton = carousel.querySelector("[data-carousel-previous]");
+  const nextButton = carousel.querySelector("[data-carousel-next]");
+  const counter = carousel.querySelector("[data-carousel-counter]");
+  const isHebrew = document.documentElement.lang === "he";
+  let current = 0;
+  let touchStartX = null;
+
+  const visibleCount = () => {
+    if (window.matchMedia("(max-width: 40rem)").matches) return 1;
+    if (window.matchMedia("(max-width: 56rem)").matches) return 2;
+    return 3;
+  };
+
+  const render = () => {
+    const visible = visibleCount();
+    const lastPosition = slides.length - visible;
+    current = Math.max(0, Math.min(current, lastPosition));
+    const step = slides[0].getBoundingClientRect().width
+      + parseFloat(getComputedStyle(track).columnGap || 0);
+    track.style.transform = `translateX(${current * step}px)`;
+    previousButton.disabled = current === 0;
+    nextButton.disabled = current === lastPosition;
+    const range = visible === 1 ? `${current + 1}` : `${current + 1}\u2013${current + visible}`;
+    counter.textContent = `${range} ${isHebrew ? "מתוך" : "of"} ${slides.length}`;
+  };
+
+  const move = (change) => {
+    current += change;
+    render();
+  };
+
+  previousButton.addEventListener("click", () => move(-1));
+  nextButton.addEventListener("click", () => move(1));
+  viewport.addEventListener("keydown", (event) => {
+    if (event.key === "ArrowLeft" && !nextButton.disabled) {
+      event.preventDefault();
+      move(1);
+    }
+    if (event.key === "ArrowRight" && !previousButton.disabled) {
+      event.preventDefault();
+      move(-1);
+    }
+  });
+  viewport.addEventListener("touchstart", (event) => {
+    touchStartX = event.touches[0].clientX;
+  }, { passive: true });
+  viewport.addEventListener("touchend", (event) => {
+    if (touchStartX === null) return;
+    const distance = event.changedTouches[0].clientX - touchStartX;
+    if (Math.abs(distance) > 45) move(distance < 0 ? 1 : -1);
+    touchStartX = null;
+  }, { passive: true });
+  window.addEventListener("resize", render);
+  render();
+});
