@@ -573,6 +573,103 @@ h1 {
   margin: 2rem auto clamp(4rem, 9vw, 7rem);
 }
 
+.onboarding-carousel {
+  width: 100%;
+  margin-top: 2.5rem;
+  overflow: hidden;
+}
+
+.onboarding-carousel-viewport {
+  overflow: hidden;
+  direction: rtl;
+  touch-action: pan-y;
+}
+
+.onboarding-carousel-viewport:focus-visible {
+  border-radius: 0.5rem;
+  outline: 3px solid rgba(86, 129, 106, 0.5);
+  outline-offset: 4px;
+}
+
+.onboarding-carousel-track {
+  display: flex;
+  gap: 1.25rem;
+  transition: transform 320ms ease;
+  will-change: transform;
+}
+
+.onboarding-carousel-slide {
+  display: flex;
+  min-width: calc((100% - 2.5rem) / 3);
+  aspect-ratio: 459 / 851;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+}
+
+.onboarding-carousel-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.onboarding-carousel-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1.25rem;
+  direction: rtl;
+}
+
+.project-details .onboarding-carousel-counter {
+  width: auto;
+  margin: 0;
+  font-size: 1rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.onboarding-carousel-buttons {
+  display: flex;
+  gap: 0.65rem;
+}
+
+.onboarding-carousel-buttons button {
+  display: grid;
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0;
+  border: 1px solid #56816a;
+  border-radius: 50%;
+  place-items: center;
+  color: #202522;
+  background: transparent;
+  cursor: pointer;
+  font: inherit;
+  font-size: 1.35rem;
+}
+
+.onboarding-carousel-buttons button:hover:not(:disabled) {
+  color: #f5f3ee;
+  background: #56816a;
+}
+
+.onboarding-carousel-buttons button:focus-visible {
+  outline: 3px solid rgba(86, 129, 106, 0.5);
+  outline-offset: 3px;
+}
+
+.onboarding-carousel-buttons button:disabled {
+  cursor: default;
+  opacity: 0.35;
+}
+
+@media (max-width: 56rem) and (min-width: 40.001rem) {
+  .onboarding-carousel-slide {
+    min-width: calc((100% - 1.25rem) / 2);
+  }
+}
+
 @media (max-width: 40rem) {
   .intro {
     width: min(100% - 2.5rem, 72rem);
@@ -664,6 +761,10 @@ h1 {
     font-size: 18px;
   }
 
+  .onboarding-carousel-slide {
+    min-width: 86%;
+  }
+
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -677,7 +778,8 @@ h1 {
   .project-card-preview::before,
   .project-card-preview-logo,
   .project-card-preview-text,
-  .project-image {
+  .project-image,
+  .onboarding-carousel-track {
     transition: none;
   }
 }
