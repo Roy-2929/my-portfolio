@@ -235,6 +235,19 @@ h1 {
   transition: opacity 200ms ease;
 }
 
+.tambour-card .project-card-preview-logo,
+.coeo-card .project-card-preview-logo {
+  width: min(100%, 11rem);
+}
+
+.caffe-elit-card .project-card-preview-logo {
+  width: min(100%, 10rem);
+}
+
+.cellcom-card .project-card-preview-logo {
+  width: min(100%, 9rem);
+}
+
 .project-card-preview-text {
   position: absolute;
   z-index: 1;
@@ -658,6 +671,10 @@ h1 {
 }
 
 @media (max-width: 56rem) and (min-width: 40.001rem) {
+  .project-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   .onboarding-carousel-slide {
     min-width: calc((100% - 1.25rem) / 2);
   }
