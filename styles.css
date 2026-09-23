@@ -617,16 +617,9 @@ h1 {
 .onboarding-carousel-controls {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   margin-top: 1.25rem;
   direction: rtl;
-}
-
-.project-details .onboarding-carousel-counter {
-  width: auto;
-  margin: 0;
-  font-size: 1rem;
-  font-variant-numeric: tabular-nums;
 }
 
 .onboarding-carousel-buttons {

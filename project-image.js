@@ -33,8 +33,6 @@ document.querySelectorAll("[data-carousel]").forEach((carousel) => {
   const slides = [...carousel.querySelectorAll(".onboarding-carousel-slide")];
   const previousButton = carousel.querySelector("[data-carousel-previous]");
   const nextButton = carousel.querySelector("[data-carousel-next]");
-  const counter = carousel.querySelector("[data-carousel-counter]");
-  const isHebrew = document.documentElement.lang === "he";
   let current = 0;
   let touchStartX = null;
 
@@ -53,8 +51,6 @@ document.querySelectorAll("[data-carousel]").forEach((carousel) => {
     track.style.transform = `translateX(${current * step}px)`;
     previousButton.disabled = current === 0;
     nextButton.disabled = current === lastPosition;
-    const range = visible === 1 ? `${current + 1}` : `${current + 1}\u2013${current + visible}`;
-    counter.textContent = `${range} ${isHebrew ? "מתוך" : "of"} ${slides.length}`;
   };
 
   const move = (change) => {
