@@ -611,6 +611,17 @@ h1 {
   margin-bottom: 0;
 }
 
+html[lang="en"]
+  .project-details
+  .project-freesbe-journey-image:not(.is-expanded) {
+  --freesbe-journey-width: min(calc(100vw - 3rem), 62.5rem);
+  width: var(--freesbe-journey-width);
+  margin-inline-start: calc(
+    (min(calc(100vw - 3rem), 72rem) - var(--freesbe-journey-width)) / 2
+  );
+  margin-inline-end: 0;
+}
+
 .project-details .project-freesbe-journey-image.is-expanded {
   width: var(--image-available-width);
   margin-inline-start: calc((100% - var(--image-available-width)) / 2);
@@ -798,6 +809,13 @@ h1 {
   .project-onboarding-image {
     width: 100%;
     margin-bottom: 0;
+  }
+
+  html[lang="en"]
+    .project-details
+    .project-freesbe-journey-image:not(.is-expanded) {
+    --freesbe-journey-width: calc(100vw - 2.5rem);
+    margin-inline-start: 0;
   }
 
   .project-image figcaption {
