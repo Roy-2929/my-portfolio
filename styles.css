@@ -603,6 +603,32 @@ h1 {
   margin: 2rem auto clamp(4rem, 9vw, 7rem);
 }
 
+.project-details .project-freesbe-journey-image {
+  display: flex;
+  width: min(100%, 50rem);
+  justify-content: center;
+  margin-inline: auto;
+  margin-bottom: 0;
+}
+
+.project-details .project-freesbe-journey-image.is-expanded {
+  width: var(--image-available-width);
+  margin-inline-start: calc((100% - var(--image-available-width)) / 2);
+  margin-inline-end: 0;
+}
+
+.project-freesbe-journey-image .project-image-toggle {
+  display: inline-block;
+  width: auto;
+  max-width: 100%;
+}
+
+.project-freesbe-journey-image img {
+  width: auto;
+  max-width: 100%;
+  height: auto;
+}
+
 .onboarding-carousel {
   width: 100%;
   margin-top: 2.5rem;
