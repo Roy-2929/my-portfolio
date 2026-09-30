@@ -692,8 +692,15 @@ html[lang="en"]
   margin-top: clamp(3.5rem, 7vw, 5rem);
 }
 
-.freesbe-conversation-copy {
-  margin-top: clamp(3.5rem, 7vw, 5rem);
+html[lang="en"] .project-details .freesbe-conversation-copy {
+  width: min(calc(100vw - 3rem), 62.5rem);
+  margin: clamp(3.5rem, 7vw, 5rem) auto 0;
+}
+
+html[lang="en"] .project-details .freesbe-conversation-copy h2,
+html[lang="en"] .project-details .freesbe-conversation-copy p {
+  margin-inline: auto;
+  text-align: center;
 }
 
 .freesbe-rent-video-wrapper {
@@ -908,6 +915,10 @@ html[lang="en"]
 
   .project-details p {
     font-size: 18px;
+  }
+
+  html[lang="en"] .project-details .freesbe-conversation-copy {
+    width: calc(100vw - 2.5rem);
   }
 
   .onboarding-carousel-slide {
