@@ -127,3 +127,27 @@ document.querySelectorAll("[data-carousel]").forEach((carousel) => {
   window.addEventListener("resize", () => render(false));
   render(false);
 });
+
+document.querySelectorAll("[data-video-toggle]").forEach((toggle) => {
+  const video = toggle.parentElement.querySelector("video");
+
+  const updateToggle = () => {
+    const isPaused = video.paused;
+    toggle.toggleAttribute("data-paused", isPaused);
+    toggle.setAttribute("aria-label", isPaused ? "Play video" : "Pause video");
+  };
+
+  toggle.addEventListener("click", () => {
+    if (video.paused) {
+      video.play().catch(updateToggle);
+    } else {
+      video.pause();
+    }
+  });
+
+  video.addEventListener("play", updateToggle);
+  video.addEventListener("pause", updateToggle);
+  updateToggle();
+
+  if (video.paused) video.play().catch(updateToggle);
+});
