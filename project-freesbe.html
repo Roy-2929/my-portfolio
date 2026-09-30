@@ -140,18 +140,32 @@
               </div>
             </div>
           </div>
-          <video
-            class="freesbe-rent-video"
-            src="./Comp-3_1-freesbe.mp4"
-            autoplay
-            muted
-            loop
-            playsinline
-            controls
-            preload="metadata"
-          >
-            Your browser does not support embedded videos.
-          </video>
+          <div class="freesbe-rent-video-wrapper">
+            <video
+              class="freesbe-rent-video"
+              src="./Comp-3_1-freesbe.mp4"
+              autoplay
+              loop
+              muted
+              playsinline
+              preload="metadata"
+            >
+              Your browser does not support embedded videos.
+            </video>
+            <button
+              class="freesbe-video-toggle"
+              type="button"
+              aria-label="Pause video"
+              data-video-toggle
+            >
+              <svg class="freesbe-video-pause-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M7 5v14M17 5v14" />
+              </svg>
+              <svg class="freesbe-video-play-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="m8 5 11 7-11 7Z" />
+              </svg>
+            </button>
+          </div>
         </section>
       </div>
     </main>

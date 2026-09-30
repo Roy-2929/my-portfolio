@@ -609,7 +609,7 @@ html[lang="en"]
   :is(
     .project-freesbe-journey-image:not(.is-expanded),
     .freesbe-rent-carousel,
-    .freesbe-rent-video
+    .freesbe-rent-video-wrapper
   ) {
   --freesbe-journey-width: min(calc(100vw - 3rem), 62.5rem);
   --image-width: var(--freesbe-journey-width);
@@ -692,12 +692,68 @@ html[lang="en"]
   margin-top: clamp(3.5rem, 7vw, 5rem);
 }
 
-.freesbe-rent-video {
+.freesbe-rent-video-wrapper {
+  position: relative;
   display: block;
   width: min(100%, 52rem);
-  height: auto;
   margin-top: 2.5rem;
+}
+
+.freesbe-rent-video {
+  display: block;
+  width: 100%;
+  height: auto;
   object-fit: contain;
+}
+
+.freesbe-video-toggle {
+  position: absolute;
+  inset-inline-end: 0.75rem;
+  inset-block-end: 0.75rem;
+  display: grid;
+  width: 2.25rem;
+  height: 2.25rem;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  place-items: center;
+  color: #fff;
+  background: transparent;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.8));
+  cursor: pointer;
+}
+
+.freesbe-video-toggle svg {
+  width: 1.35rem;
+  height: 1.35rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2.25;
+}
+
+.freesbe-video-toggle .freesbe-video-play-icon {
+  display: none;
+  fill: currentColor;
+  stroke: currentColor;
+}
+
+.freesbe-video-toggle[data-paused] .freesbe-video-pause-icon {
+  display: none;
+}
+
+.freesbe-video-toggle[data-paused] .freesbe-video-play-icon {
+  display: block;
+}
+
+.freesbe-video-toggle:hover {
+  color: #e8efe9;
+}
+
+.freesbe-video-toggle:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 3px;
 }
 
 .freesbe-rent-carousel .onboarding-carousel-slide {
