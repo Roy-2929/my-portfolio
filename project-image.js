@@ -30,50 +30,68 @@ imageFigures.forEach((figure) => {
 document.querySelectorAll("[data-carousel]").forEach((carousel) => {
   const viewport = carousel.querySelector("[data-carousel-viewport]");
   const track = carousel.querySelector(".onboarding-carousel-track");
-  const slides = [...carousel.querySelectorAll(".onboarding-carousel-slide")];
+  const slides = [...track.children];
   const previousButton = carousel.querySelector("[data-carousel-previous]");
   const nextButton = carousel.querySelector("[data-carousel-next]");
-  const status = carousel.querySelector("[data-carousel-status]");
+  const cloneCount = Math.min(3, slides.length);
   let current = 0;
   let touchStartX = null;
+  let isMoving = false;
 
-  const visibleCount = () => {
-    if (window.matchMedia("(max-width: 40rem)").matches) return 1;
-    if (window.matchMedia("(max-width: 56rem)").matches) return 2;
-    return 3;
+  const makeClone = (slide) => {
+    const clone = slide.cloneNode(true);
+    clone.setAttribute("aria-hidden", "true");
+    clone.setAttribute("inert", "");
+    clone.dataset.carouselClone = "";
+    return clone;
   };
 
-  const render = () => {
-    const visible = visibleCount();
-    const lastPosition = slides.length - visible;
-    current = Math.max(0, Math.min(current, lastPosition));
+  slides.slice(-cloneCount).reverse().forEach((slide) => {
+    track.prepend(makeClone(slide));
+  });
+  slides.slice(0, cloneCount).forEach((slide) => {
+    track.append(makeClone(slide));
+  });
+
+  const render = (animate = true) => {
     const step = slides[0].getBoundingClientRect().width
       + parseFloat(getComputedStyle(track).columnGap || 0);
-    track.style.transform = `translateX(${current * step}px)`;
-    previousButton.disabled = current === 0;
-    nextButton.disabled = current === lastPosition;
-    if (status) {
-      const firstVisible = current + 1;
-      const lastVisible = Math.min(current + visible, slides.length);
-      status.textContent = firstVisible === lastVisible
-        ? `Screen ${firstVisible} of ${slides.length}`
-        : `Screens ${firstVisible}\u2013${lastVisible} of ${slides.length}`;
-    }
+    track.style.transition = animate ? "" : "none";
+    track.style.transform = `translateX(${(cloneCount + current) * step}px)`;
   };
 
   const move = (change) => {
+    if (isMoving) return;
+    isMoving = true;
     current += change;
     render();
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      if (current >= slides.length) current -= slides.length;
+      if (current < 0) current += slides.length;
+      render(false);
+      isMoving = false;
+    }
   };
+
+  track.addEventListener("transitionend", (event) => {
+    if (event.propertyName !== "transform") return;
+    if (current >= slides.length) current -= slides.length;
+    if (current < 0) current += slides.length;
+    render(false);
+    // Force the reset to be applied before transitions are restored.
+    track.getBoundingClientRect();
+    track.style.transition = "";
+    isMoving = false;
+  });
 
   previousButton.addEventListener("click", () => move(-1));
   nextButton.addEventListener("click", () => move(1));
   viewport.addEventListener("keydown", (event) => {
-    if (event.key === "ArrowLeft" && !nextButton.disabled) {
+    if (event.key === "ArrowLeft") {
       event.preventDefault();
       move(1);
     }
-    if (event.key === "ArrowRight" && !previousButton.disabled) {
+    if (event.key === "ArrowRight") {
       event.preventDefault();
       move(-1);
     }
@@ -87,6 +105,6 @@ document.querySelectorAll("[data-carousel]").forEach((carousel) => {
     if (Math.abs(distance) > 45) move(distance < 0 ? 1 : -1);
     touchStartX = null;
   }, { passive: true });
-  window.addEventListener("resize", render);
-  render();
+  window.addEventListener("resize", () => render(false));
+  render(false);
 });
