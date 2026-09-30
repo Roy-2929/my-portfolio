@@ -613,7 +613,10 @@ h1 {
 
 html[lang="en"]
   .project-details
-  .project-freesbe-journey-image:not(.is-expanded) {
+  :is(
+    .project-freesbe-journey-image:not(.is-expanded),
+    .freesbe-rent-carousel
+  ) {
   --freesbe-journey-width: min(calc(100vw - 3rem), 62.5rem);
   width: var(--freesbe-journey-width);
   margin-inline-start: calc(
@@ -703,6 +706,7 @@ html[lang="en"]
 }
 
 .freesbe-rent-carousel .onboarding-carousel-slide {
+  flex: 0 0 calc((100% - 2.5rem) / 3);
   aspect-ratio: 252 / 410;
 }
 
@@ -748,6 +752,10 @@ html[lang="en"]
 
   .onboarding-carousel-slide {
     min-width: calc((100% - 1.25rem) / 2);
+  }
+
+  .freesbe-rent-carousel .onboarding-carousel-slide {
+    flex-basis: calc((100% - 1.25rem) / 2);
   }
 }
 
@@ -831,7 +839,10 @@ html[lang="en"]
 
   html[lang="en"]
     .project-details
-    .project-freesbe-journey-image:not(.is-expanded) {
+    :is(
+      .project-freesbe-journey-image:not(.is-expanded),
+      .freesbe-rent-carousel
+    ) {
     --freesbe-journey-width: calc(100vw - 2.5rem);
     margin-inline-start: 0;
   }
@@ -853,6 +864,9 @@ html[lang="en"]
     min-width: 86%;
   }
 
+  .freesbe-rent-carousel .onboarding-carousel-slide {
+    flex-basis: 86%;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
