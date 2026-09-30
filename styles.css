@@ -691,16 +691,6 @@ html[lang="en"]
   direction: rtl;
 }
 
-.project-details .onboarding-carousel-status {
-  order: 1;
-  width: auto;
-  margin: 0 0 0 auto;
-  color: #4e5b54;
-  font-size: 0.95rem;
-  line-height: 1.6;
-  direction: ltr;
-}
-
 .freesbe-rent-carousel {
   margin-top: clamp(3.5rem, 7vw, 5rem);
 }
@@ -730,7 +720,7 @@ html[lang="en"]
   font-size: 1.35rem;
 }
 
-.onboarding-carousel-buttons button:hover:not(:disabled) {
+.onboarding-carousel-buttons button:hover {
   color: #f5f3ee;
   background: #56816a;
 }
@@ -738,11 +728,6 @@ html[lang="en"]
 .onboarding-carousel-buttons button:focus-visible {
   outline: 3px solid rgba(86, 129, 106, 0.5);
   outline-offset: 3px;
-}
-
-.onboarding-carousel-buttons button:disabled {
-  cursor: default;
-  opacity: 0.35;
 }
 
 @media (max-width: 56rem) and (min-width: 40.001rem) {
