@@ -5,25 +5,58 @@ imageFigures.forEach((figure) => {
 
   if (!toggle) return;
 
+  let collapsedWidth = figure.getBoundingClientRect().width;
+  let isAnimating = false;
+  let transitionTimer;
+
+  const getAvailableWidth = () => {
+    const pageGutter = window.matchMedia("(max-width: 40rem)").matches
+      ? 40
+      : 48;
+    return window.innerWidth - pageGutter;
+  };
+
+  const setExpanded = (isExpanded) => {
+    isAnimating = true;
+    window.clearTimeout(transitionTimer);
+    figure.classList.toggle("is-expanded", isExpanded);
+    toggle.setAttribute(
+      "aria-label",
+      isExpanded ? toggle.dataset.reduceLabel : toggle.dataset.enlargeLabel,
+    );
+    transitionTimer = window.setTimeout(() => {
+      isAnimating = false;
+      updateToggle();
+    }, 400);
+  };
+
   const updateToggle = () => {
-    const pageGutter = window.matchMedia("(max-width: 40rem)").matches ? 40 : 48;
-    const availableWidth = window.innerWidth - pageGutter;
-    const canExpand = availableWidth - figure.getBoundingClientRect().width > 1;
+    const availableWidth = getAvailableWidth();
 
     if (!figure.classList.contains("is-expanded")) {
-      toggle.disabled = !canExpand;
+      collapsedWidth = figure.getBoundingClientRect().width;
+      toggle.disabled = availableWidth - collapsedWidth <= 1;
+    } else if (availableWidth - collapsedWidth <= 1) {
+      setExpanded(false);
     }
   };
 
   toggle.addEventListener("click", () => {
-    const isExpanded = figure.classList.toggle("is-expanded");
-    toggle.setAttribute("aria-label", isExpanded
-      ? toggle.dataset.reduceLabel
-      : toggle.dataset.enlargeLabel);
-    updateToggle();
+    if (toggle.disabled) return;
+    setExpanded(!figure.classList.contains("is-expanded"));
   });
 
+  figure.addEventListener("transitionend", (event) => {
+    if (event.propertyName !== "width") return;
+    window.clearTimeout(transitionTimer);
+    isAnimating = false;
+    updateToggle();
+  });
   window.addEventListener("resize", updateToggle);
+  new ResizeObserver(() => {
+    if (!isAnimating && !figure.classList.contains("is-expanded"))
+      updateToggle();
+  }).observe(figure);
   updateToggle();
 });
 
