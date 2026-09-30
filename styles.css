@@ -692,6 +692,10 @@ html[lang="en"]
   margin-top: clamp(3.5rem, 7vw, 5rem);
 }
 
+.freesbe-conversation-copy {
+  margin-top: clamp(3.5rem, 7vw, 5rem);
+}
+
 .freesbe-rent-video-wrapper {
   position: relative;
   display: block;
