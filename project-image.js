@@ -6,8 +6,6 @@ imageFigures.forEach((figure) => {
   if (!toggle) return;
 
   let collapsedWidth = figure.getBoundingClientRect().width;
-  let isAnimating = false;
-  let transitionTimer;
 
   const getAvailableWidth = () => {
     const pageGutter = window.matchMedia("(max-width: 40rem)").matches
@@ -17,17 +15,12 @@ imageFigures.forEach((figure) => {
   };
 
   const setExpanded = (isExpanded) => {
-    isAnimating = true;
-    window.clearTimeout(transitionTimer);
     figure.classList.toggle("is-expanded", isExpanded);
     toggle.setAttribute(
       "aria-label",
       isExpanded ? toggle.dataset.reduceLabel : toggle.dataset.enlargeLabel,
     );
-    transitionTimer = window.setTimeout(() => {
-      isAnimating = false;
-      updateToggle();
-    }, 400);
+    updateToggle();
   };
 
   const updateToggle = () => {
@@ -46,16 +39,9 @@ imageFigures.forEach((figure) => {
     setExpanded(!figure.classList.contains("is-expanded"));
   });
 
-  figure.addEventListener("transitionend", (event) => {
-    if (event.propertyName !== "width") return;
-    window.clearTimeout(transitionTimer);
-    isAnimating = false;
-    updateToggle();
-  });
   window.addEventListener("resize", updateToggle);
   new ResizeObserver(() => {
-    if (!isAnimating && !figure.classList.contains("is-expanded"))
-      updateToggle();
+    if (!figure.classList.contains("is-expanded")) updateToggle();
   }).observe(figure);
   updateToggle();
 });
