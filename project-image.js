@@ -33,6 +33,7 @@ document.querySelectorAll("[data-carousel]").forEach((carousel) => {
   const slides = [...carousel.querySelectorAll(".onboarding-carousel-slide")];
   const previousButton = carousel.querySelector("[data-carousel-previous]");
   const nextButton = carousel.querySelector("[data-carousel-next]");
+  const status = carousel.querySelector("[data-carousel-status]");
   let current = 0;
   let touchStartX = null;
 
@@ -51,6 +52,13 @@ document.querySelectorAll("[data-carousel]").forEach((carousel) => {
     track.style.transform = `translateX(${current * step}px)`;
     previousButton.disabled = current === 0;
     nextButton.disabled = current === lastPosition;
+    if (status) {
+      const firstVisible = current + 1;
+      const lastVisible = Math.min(current + visible, slides.length);
+      status.textContent = firstVisible === lastVisible
+        ? `Screen ${firstVisible} of ${slides.length}`
+        : `Screens ${firstVisible}\u2013${lastVisible} of ${slides.length}`;
+    }
   };
 
   const move = (change) => {

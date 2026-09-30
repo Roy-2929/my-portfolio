@@ -688,6 +688,24 @@ html[lang="en"]
   direction: rtl;
 }
 
+.project-details .onboarding-carousel-status {
+  order: 1;
+  width: auto;
+  margin: 0 0 0 auto;
+  color: #4e5b54;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  direction: ltr;
+}
+
+.freesbe-rent-carousel {
+  margin-top: clamp(3.5rem, 7vw, 5rem);
+}
+
+.freesbe-rent-carousel .onboarding-carousel-slide {
+  aspect-ratio: 252 / 410;
+}
+
 .onboarding-carousel-buttons {
   display: flex;
   gap: 0.65rem;
