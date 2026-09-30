@@ -431,11 +431,10 @@ h1 {
 
 .project-image {
   --image-available-width: calc(100vw - 3rem);
-  width: 100%;
+  --image-width: 100%;
+  width: var(--image-width);
   margin: 0 0 4rem;
-  transition:
-    width 360ms ease,
-    margin-inline-start 360ms ease;
+  margin-inline: calc((100% - var(--image-width)) / 2);
 }
 
 .project-hero-image {
@@ -452,18 +451,16 @@ h1 {
 
 .project-onboarding-image {
   --image-intrinsic-width: 1178px;
-  width: min(100%, 52rem);
+  --image-width: min(100%, 52rem);
   margin-bottom: 0;
 }
 
 .project-image.is-expanded {
-  width: var(--image-available-width);
-  margin-inline: auto;
+  --image-width: var(--image-available-width);
 }
 
 .project-onboarding-image.is-expanded {
-  width: min(var(--image-available-width), var(--image-intrinsic-width));
-  margin-inline: auto;
+  --image-width: min(var(--image-available-width), var(--image-intrinsic-width));
 }
 
 .project-image-toggle {
@@ -587,14 +584,12 @@ h1 {
 
 .project-details .project-insights-image {
   --image-intrinsic-width: 1190px;
-  width: min(100%, 50rem);
-  margin-inline: auto;
+  --image-width: min(100%, 50rem);
   margin-bottom: 0;
 }
 
 .project-details .project-insights-image.is-expanded {
-  width: min(var(--image-available-width), var(--image-intrinsic-width));
-  margin-inline: auto;
+  --image-width: min(var(--image-available-width), var(--image-intrinsic-width));
 }
 
 .project-details .project-workshop-image {
@@ -604,9 +599,8 @@ h1 {
 
 .project-details .project-freesbe-journey-image {
   display: flex;
-  width: min(100%, 50rem);
+  --image-width: min(100%, 50rem);
   justify-content: center;
-  margin-inline: auto;
   margin-bottom: 0;
 }
 
@@ -618,13 +612,20 @@ html[lang="en"]
     .freesbe-rent-video
   ) {
   --freesbe-journey-width: min(calc(100vw - 3rem), 62.5rem);
+  --image-width: var(--freesbe-journey-width);
   width: var(--freesbe-journey-width);
   margin-inline: auto;
 }
 
+html[lang="en"]
+  .project-details
+  .project-freesbe-journey-image:not(.is-expanded) {
+  margin-inline: calc((100% - var(--image-width)) / 2);
+}
+
 .project-details .project-freesbe-journey-image.is-expanded {
-  width: var(--image-available-width);
-  margin-inline: auto;
+  --image-width: var(--image-available-width);
+  margin-inline: calc((100% - var(--image-width)) / 2);
 }
 
 .project-freesbe-journey-image .project-image-toggle {
@@ -822,7 +823,7 @@ html[lang="en"]
   }
 
   .project-onboarding-image {
-    width: 100%;
+    --image-width: 100%;
     margin-bottom: 0;
   }
 
@@ -834,7 +835,6 @@ html[lang="en"]
       .freesbe-rent-video
     ) {
     --freesbe-journey-width: calc(100vw - 2.5rem);
-    margin-inline-start: 0;
   }
 
   .project-image figcaption {
@@ -870,7 +870,6 @@ html[lang="en"]
   .project-card-preview::before,
   .project-card-preview-logo,
   .project-card-preview-text,
-  .project-image,
   .onboarding-carousel-track {
     transition: none;
   }
