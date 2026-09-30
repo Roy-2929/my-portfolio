@@ -615,7 +615,8 @@ html[lang="en"]
   .project-details
   :is(
     .project-freesbe-journey-image:not(.is-expanded),
-    .freesbe-rent-carousel
+    .freesbe-rent-carousel,
+    .freesbe-rent-video
   ) {
   --freesbe-journey-width: min(calc(100vw - 3rem), 62.5rem);
   width: var(--freesbe-journey-width);
@@ -693,6 +694,13 @@ html[lang="en"]
 
 .freesbe-rent-carousel {
   margin-top: clamp(3.5rem, 7vw, 5rem);
+}
+
+.freesbe-rent-video {
+  display: block;
+  height: auto;
+  margin-top: 2.5rem;
+  object-fit: contain;
 }
 
 .freesbe-rent-carousel .onboarding-carousel-slide {
@@ -826,7 +834,8 @@ html[lang="en"]
     .project-details
     :is(
       .project-freesbe-journey-image:not(.is-expanded),
-      .freesbe-rent-carousel
+      .freesbe-rent-carousel,
+      .freesbe-rent-video
     ) {
     --freesbe-journey-width: calc(100vw - 2.5rem);
     margin-inline-start: 0;
