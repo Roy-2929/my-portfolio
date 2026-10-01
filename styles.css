@@ -463,6 +463,26 @@ h1 {
   --image-width: min(var(--image-available-width), var(--image-intrinsic-width));
 }
 
+.riseup-how-to-grid {
+  display: grid;
+  width: min(100%, 52rem);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+  margin: 2.5rem auto 0;
+  direction: rtl;
+}
+
+.project-details .riseup-how-to-image {
+  --image-width: 100%;
+  margin: 0;
+}
+
+.project-details .riseup-how-to-image.is-expanded {
+  --image-width: 100%;
+  grid-column: 1 / -1;
+  margin-inline: 0;
+}
+
 .project-image-toggle {
   position: relative;
   display: block;
@@ -892,6 +912,11 @@ html[lang="en"] .project-details .freesbe-conversation-copy p {
   .project-onboarding-image {
     --image-width: 100%;
     margin-bottom: 0;
+  }
+
+  .riseup-how-to-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
   }
 
   html[lang="en"]
