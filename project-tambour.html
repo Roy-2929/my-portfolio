@@ -36,6 +36,8 @@
             data-image="Tambour_site_1.png"
             data-width="568"
             data-height="965"
+            data-crop-height="238"
+            data-title="תכניסו קצת צבע לחיים"
             data-alt="Tambour website copy written for homeowners"
             data-description="An inviting voice that helps people imagine what’s possible in their own home."
           >Homeowners</button>
@@ -50,6 +52,8 @@
             data-image="Tambour_site_2.png"
             data-width="568"
             data-height="675"
+            data-crop-height="202"
+            data-title="בונים עתיד טוב יותר"
             data-alt="Tambour website copy written for professionals"
             data-description="A practical voice focused on professional knowledge and everyday solutions."
           >Professionals</button>
@@ -64,6 +68,8 @@
             data-image="Tambour_site_3.png"
             data-width="568"
             data-height="851"
+            data-crop-height="350"
+            data-title="שותפים ליצירה."
             data-alt="Tambour website copy written for architects and designers"
             data-description="A collaborative voice that connects creative possibilities with the needs of a project."
           >Architects &amp; designers</button>
@@ -78,6 +84,8 @@
             data-image="Tambour_site_4.png"
             data-width="568"
             data-height="1047"
+            data-crop-height="180"
+            data-title="האחריות שלנו. הביטחון שלכם."
             data-alt="Tambour website copy written for industry"
             data-description="A confident voice that emphasises expertise, responsibility and reliability."
           >Industry</button>
@@ -93,17 +101,38 @@
           <p class="tambour-audience-description" data-audience-description>
             An inviting voice that helps people imagine what’s possible in their own home.
           </p>
-          <p class="tambour-scroll-hint" aria-hidden="true">
-            <span>Scroll to explore</span>
-            <span class="tambour-scroll-arrow">↓</span>
-          </p>
-          <div class="tambour-image-frame" data-audience-frame>
+          <div class="tambour-audience-sample">
+            <div
+              class="tambour-image-frame"
+              data-audience-frame
+              style="--tambour-crop-height: 238"
+            >
+              <img
+                src="Tambour_site_1.png"
+                width="568"
+                height="965"
+                alt="Tambour website copy written for homeowners"
+                data-audience-image
+              />
+            </div>
+            <h3 class="tambour-live-title" dir="rtl" lang="he" data-audience-title>
+              תכניסו קצת צבע לחיים
+            </h3>
+          </div>
+          <button
+            class="tambour-full-page-toggle"
+            type="button"
+            aria-expanded="false"
+            aria-controls="tambour-full-page"
+            data-full-page-toggle
+          >View full page</button>
+          <div id="tambour-full-page" class="tambour-full-page" hidden>
             <img
               src="Tambour_site_1.png"
               width="568"
               height="965"
-              alt="Tambour website copy written for homeowners"
-              data-audience-image
+              alt="Full Tambour website page written for homeowners"
+              data-full-page-image
             />
           </div>
         </div>
