@@ -46,6 +46,52 @@ imageFigures.forEach((figure) => {
   updateToggle();
 });
 
+document.querySelectorAll("[data-how-to-gallery]").forEach((gallery) => {
+  const mainFigure = gallery.querySelector("[data-how-to-main]");
+  const mainImage = mainFigure.querySelector("img");
+  const mainToggle = mainFigure.querySelector(".project-image-toggle");
+  const thumbnails = [...gallery.querySelectorAll("[data-how-to-thumbnail]")];
+  let current = 0;
+  let touchStartX = null;
+
+  const selectImage = (index, focusThumbnail = false) => {
+    current = (index + thumbnails.length) % thumbnails.length;
+    const selected = thumbnails[current];
+
+    mainImage.src = selected.dataset.src;
+    mainImage.width = Number(selected.dataset.width);
+    mainImage.height = Number(selected.dataset.height);
+    mainImage.alt = selected.dataset.alt;
+    thumbnails.forEach((thumbnail, thumbnailIndex) => {
+      thumbnail.setAttribute("aria-pressed", String(thumbnailIndex === current));
+    });
+
+    if (focusThumbnail) selected.focus({ preventScroll: true });
+  };
+
+  thumbnails.forEach((thumbnail, index) => {
+    thumbnail.addEventListener("click", () => selectImage(index));
+    thumbnail.addEventListener("keydown", (event) => {
+      if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
+      event.preventDefault();
+      selectImage(current + (event.key === "ArrowLeft" ? 1 : -1), true);
+    });
+  });
+
+  mainToggle.addEventListener("touchstart", (event) => {
+    touchStartX = event.touches[0].clientX;
+  }, { passive: true });
+  mainToggle.addEventListener("touchend", (event) => {
+    if (touchStartX === null) return;
+    const distance = event.changedTouches[0].clientX - touchStartX;
+    if (Math.abs(distance) > 45) {
+      event.preventDefault();
+      selectImage(current + (distance < 0 ? 1 : -1));
+    }
+    touchStartX = null;
+  });
+});
+
 document.querySelectorAll("[data-carousel]").forEach((carousel) => {
   const viewport = carousel.querySelector("[data-carousel-viewport]");
   const track = carousel.querySelector(".onboarding-carousel-track");
