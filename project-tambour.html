@@ -20,6 +20,95 @@
           As Tambour introduced a new brand strategy, we helped shape a more personal voice and bring it to life across four websites. The challenge was to speak to professionals, industrial clients, designers and homeowners in ways that felt relevant to each, while keeping one consistent, recognisable brand voice.
         </p>
       </header>
+
+      <section class="tambour-audiences" aria-labelledby="audiences-title">
+        <h2 id="audiences-title">One voice, four audiences</h2>
+
+        <div class="tambour-tabs" role="tablist" aria-label="Audience">
+          <button
+            id="audience-tab-homeowners"
+            type="button"
+            role="tab"
+            aria-selected="true"
+            aria-controls="audience-panel"
+            tabindex="0"
+            data-audience-tab
+            data-image="Tambour_site_1.png"
+            data-width="568"
+            data-height="965"
+            data-alt="Tambour website copy written for homeowners"
+            data-description="An inviting voice that helps people imagine what’s possible in their own home."
+          >Homeowners</button>
+          <button
+            id="audience-tab-professionals"
+            type="button"
+            role="tab"
+            aria-selected="false"
+            aria-controls="audience-panel"
+            tabindex="-1"
+            data-audience-tab
+            data-image="Tambour_site_2.png"
+            data-width="568"
+            data-height="675"
+            data-alt="Tambour website copy written for professionals"
+            data-description="A practical voice focused on professional knowledge and everyday solutions."
+          >Professionals</button>
+          <button
+            id="audience-tab-architects"
+            type="button"
+            role="tab"
+            aria-selected="false"
+            aria-controls="audience-panel"
+            tabindex="-1"
+            data-audience-tab
+            data-image="Tambour_site_3.png"
+            data-width="568"
+            data-height="851"
+            data-alt="Tambour website copy written for architects and designers"
+            data-description="A collaborative voice that connects creative possibilities with the needs of a project."
+          >Architects &amp; designers</button>
+          <button
+            id="audience-tab-industry"
+            type="button"
+            role="tab"
+            aria-selected="false"
+            aria-controls="audience-panel"
+            tabindex="-1"
+            data-audience-tab
+            data-image="Tambour_site_4.png"
+            data-width="568"
+            data-height="1047"
+            data-alt="Tambour website copy written for industry"
+            data-description="A confident voice that emphasises expertise, responsibility and reliability."
+          >Industry</button>
+        </div>
+
+        <div
+          id="audience-panel"
+          class="tambour-audience-panel"
+          role="tabpanel"
+          aria-labelledby="audience-tab-homeowners"
+          tabindex="0"
+        >
+          <p class="tambour-audience-description" data-audience-description>
+            An inviting voice that helps people imagine what’s possible in their own home.
+          </p>
+          <p class="tambour-scroll-hint" aria-hidden="true">
+            <span>Scroll to explore</span>
+            <span class="tambour-scroll-arrow">↓</span>
+          </p>
+          <div class="tambour-image-frame" data-audience-frame>
+            <img
+              src="Tambour_site_1.png"
+              width="568"
+              height="965"
+              alt="Tambour website copy written for homeowners"
+              data-audience-image
+            />
+          </div>
+        </div>
+      </section>
     </main>
+    <script src="tambour-tabs.js"></script>
   </body>
 </html>
