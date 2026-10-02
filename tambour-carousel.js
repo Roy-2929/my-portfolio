@@ -3,8 +3,6 @@ const tambourCarousel = document.querySelector("[data-tambour-carousel]");
 if (tambourCarousel) {
   const viewport = tambourCarousel.querySelector("[data-tambour-carousel-viewport]");
   const track = tambourCarousel.querySelector("[data-tambour-carousel-track]");
-  const previousButton = tambourCarousel.querySelector("[data-tambour-carousel-previous]");
-  const nextButton = tambourCarousel.querySelector("[data-tambour-carousel-next]");
   const slides = [...track.children];
   const cloneCount = 2;
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -65,9 +63,6 @@ if (tambourCarousel) {
   track.addEventListener("transitionend", (event) => {
     if (event.propertyName === "transform" && isMoving) finishMove();
   });
-
-  previousButton.addEventListener("click", () => move(-1));
-  nextButton.addEventListener("click", () => move(1));
 
   viewport.addEventListener("keydown", (event) => {
     if (event.key === "ArrowLeft") {
