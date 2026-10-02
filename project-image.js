@@ -179,8 +179,14 @@ document.querySelectorAll("[data-video-toggle]").forEach((toggle) => {
 
   const updateToggle = () => {
     const isPaused = video.paused;
+    const isHebrew = document.documentElement.lang === "he";
     toggle.toggleAttribute("data-paused", isPaused);
-    toggle.setAttribute("aria-label", isPaused ? "Play video" : "Pause video");
+    toggle.setAttribute(
+      "aria-label",
+      isHebrew
+        ? (isPaused ? "הפעלת הסרטון" : "עצירת הסרטון")
+        : (isPaused ? "Play video" : "Pause video"),
+    );
   };
 
   toggle.addEventListener("click", () => {

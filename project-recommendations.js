@@ -13,15 +13,15 @@ const portfolioProjects = [
     logo: "freesbe_logo.png",
     name: { en: "freesbe", he: "freesbe" },
     text: { en: "Lorem ipsum dolor sit amet.", he: "Lorem ipsum dolor sit amet." },
-    pages: { en: "project-freesbe.html" },
+    pages: { en: "project-freesbe.html", he: "project-freesbe-he.html" },
   },
   {
-    id: "tambour",
-    cardClass: "tambour-card",
-    logo: "tambour_logo-noBG.png",
-    name: { en: "Tambour" },
-    text: { en: "Lorem ipsum dolor sit amet." },
-    pages: { en: "project-tambour.html" },
+    id: "vanilla-vida",
+    cardClass: "vanilla-vida-card",
+    logo: "vanilla_vida_logo.svg",
+    name: { en: "Vanilla Vida", he: "Vanilla Vida" },
+    text: { en: "Lorem ipsum dolor sit amet.", he: "Lorem ipsum dolor sit amet." },
+    pages: { en: "project-vanilla-vida.html", he: "project-vanilla-vida-he.html" },
   },
 ];
 
@@ -30,7 +30,8 @@ const currentProjectPages = {
   "project-one-he.html": "riseup",
   "project-freesbe.html": "freesbe",
   "project-freesbe-he.html": "freesbe",
-  "project-tambour.html": "tambour",
+  "project-vanilla-vida.html": "vanilla-vida",
+  "project-vanilla-vida-he.html": "vanilla-vida",
 };
 
 function shuffled(projects) {
