@@ -332,6 +332,27 @@ h1 {
     color: #202522;
     opacity: 1;
   }
+
+  .more-work .project-card-preview {
+    flex-direction: row;
+  }
+
+  .more-work .project-card-preview-text {
+    position: absolute;
+    display: flex;
+    padding: 2rem;
+    color: #ffffff;
+    opacity: 0;
+  }
+
+  .more-work .project-card-preview:focus-visible::before,
+  .more-work .project-card-preview:focus-visible .project-card-preview-text {
+    opacity: 1;
+  }
+
+  .more-work .project-card-preview:focus-visible .project-card-preview-logo {
+    opacity: 0;
+  }
 }
 
 .project-card h3 {
@@ -427,6 +448,32 @@ h1 {
   font-size: clamp(1.25rem, 3vw, 1.75rem);
   letter-spacing: -0.02em;
   line-height: 1.5;
+}
+
+.more-work {
+  margin-top: clamp(6rem, 12vw, 10rem);
+  padding-top: clamp(4rem, 8vw, 6rem);
+  border-top: 1px solid rgba(86, 129, 106, 0.3);
+}
+
+.more-work h2 {
+  margin: 0;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  letter-spacing: -0.05em;
+  line-height: 1;
+  text-align: center;
+}
+
+.more-work-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+  margin-top: clamp(2.5rem, 5vw, 4rem);
+}
+
+.more-work-grid-single {
+  grid-template-columns: minmax(0, calc((100% - 1.5rem) / 2));
+  justify-content: center;
 }
 
 .tambour-audiences {
@@ -1124,6 +1171,22 @@ html[lang="en"] .project-details .freesbe-conversation-copy p {
   .project-card {
     min-height: 13rem;
     padding: 1.5rem;
+  }
+
+  .more-work {
+    margin-top: 5rem;
+    padding-top: 4rem;
+  }
+
+  .more-work-grid,
+  .more-work-grid-single {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-top: 2.5rem;
+  }
+
+  .more-work-grid-single .project-card {
+    width: 100%;
   }
 
   .project-header {
