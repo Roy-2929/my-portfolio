@@ -98,13 +98,10 @@ document.querySelectorAll("[data-carousel]").forEach((carousel) => {
   const slides = [...track.children];
   const previousButton = carousel.querySelector("[data-carousel-previous]");
   const nextButton = carousel.querySelector("[data-carousel-next]");
-  const cloneCount = slides.length;
-  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const cloneCount = Math.min(3, slides.length);
   let current = 0;
+  let touchStartX = null;
   let isMoving = false;
-  let pointerId = null;
-  let pointerStartX = 0;
-  let dragDistance = 0;
 
   const makeClone = (slide) => {
     const clone = slide.cloneNode(true);
@@ -121,47 +118,35 @@ document.querySelectorAll("[data-carousel]").forEach((carousel) => {
     track.append(makeClone(slide));
   });
 
-  slides.forEach((slide) => {
-    slide.querySelectorAll("img").forEach((image) => {
-      image.draggable = false;
-    });
-  });
-
-  const metrics = () => {
-    const slideWidth = slides[0].getBoundingClientRect().width;
-    const gap = parseFloat(getComputedStyle(track).columnGap) || 0;
-    return {
-      step: slideWidth + gap,
-      centeredOffset: (viewport.clientWidth - slideWidth) / 2,
-    };
-  };
-
-  const render = ({ animate = true, drag = 0 } = {}) => {
-    const { step, centeredOffset } = metrics();
-    const offset = (cloneCount + current) * step - centeredOffset + drag;
+  const render = (animate = true) => {
+    const step = slides[0].getBoundingClientRect().width
+      + parseFloat(getComputedStyle(track).columnGap || 0);
     track.style.transition = animate ? "" : "none";
-    track.style.transform = `translate3d(${offset}px, 0, 0)`;
-  };
-
-  const finishMove = () => {
-    if (current >= slides.length) current = 0;
-    if (current < 0) current = slides.length - 1;
-    render({ animate: false });
-    track.getBoundingClientRect();
-    track.style.transition = "";
-    isMoving = false;
+    track.style.transform = `translateX(${(cloneCount + current) * step}px)`;
   };
 
   const move = (change) => {
-    if (isMoving || pointerId !== null) return;
+    if (isMoving) return;
     isMoving = true;
     current += change;
     render();
-    if (prefersReducedMotion.matches) finishMove();
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      if (current >= slides.length) current -= slides.length;
+      if (current < 0) current += slides.length;
+      render(false);
+      isMoving = false;
+    }
   };
 
   track.addEventListener("transitionend", (event) => {
-    if (event.propertyName === "transform" && isMoving) finishMove();
+    if (event.propertyName !== "transform") return;
+    if (current >= slides.length) current -= slides.length;
+    if (current < 0) current += slides.length;
+    render(false);
+    // Force the reset to be applied before transitions are restored.
+    track.getBoundingClientRect();
+    track.style.transition = "";
+    isMoving = false;
   });
 
   previousButton.addEventListener("click", () => move(-1));
@@ -176,45 +161,17 @@ document.querySelectorAll("[data-carousel]").forEach((carousel) => {
       move(-1);
     }
   });
-  viewport.addEventListener("pointerdown", (event) => {
-    if (isMoving || event.button !== 0) return;
-    pointerId = event.pointerId;
-    pointerStartX = event.clientX;
-    dragDistance = 0;
-    viewport.setPointerCapture(pointerId);
-    viewport.classList.add("is-dragging");
-    track.style.transition = "none";
-  });
-
-  viewport.addEventListener("pointermove", (event) => {
-    if (event.pointerId !== pointerId) return;
-    const { step } = metrics();
-    dragDistance = Math.max(-step, Math.min(step, event.clientX - pointerStartX));
-    render({ animate: false, drag: dragDistance });
-  });
-
-  const finishDrag = (event) => {
-    if (event.pointerId !== pointerId) return;
-    const threshold = Math.min(100, viewport.clientWidth * 0.12);
-    viewport.classList.remove("is-dragging");
-    pointerId = null;
-    track.style.transition = "";
-
-    if (Math.abs(dragDistance) >= threshold) {
-      move(dragDistance > 0 ? 1 : -1);
-    } else if (dragDistance) {
-      isMoving = true;
-      render();
-    } else {
-      render({ animate: false });
-    }
-    dragDistance = 0;
-  };
-
-  viewport.addEventListener("pointerup", finishDrag);
-  viewport.addEventListener("pointercancel", finishDrag);
-  window.addEventListener("resize", () => render({ animate: false }));
-  render({ animate: false });
+  viewport.addEventListener("touchstart", (event) => {
+    touchStartX = event.touches[0].clientX;
+  }, { passive: true });
+  viewport.addEventListener("touchend", (event) => {
+    if (touchStartX === null) return;
+    const distance = event.changedTouches[0].clientX - touchStartX;
+    if (Math.abs(distance) > 45) move(distance < 0 ? 1 : -1);
+    touchStartX = null;
+  }, { passive: true });
+  window.addEventListener("resize", () => render(false));
+  render(false);
 });
 
 document.querySelectorAll("[data-video-toggle]").forEach((toggle) => {
