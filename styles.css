@@ -892,7 +892,6 @@ html[lang="en"]
   .project-details
   :is(
     .project-freesbe-journey-image:not(.is-expanded),
-    .freesbe-rent-carousel,
     .freesbe-rent-video-wrapper
   ) {
   --freesbe-journey-width: min(calc(100vw - 3rem), 62.5rem);
@@ -924,8 +923,11 @@ html[lang="en"]
 }
 
 .onboarding-carousel {
-  width: min(100%, 52rem);
-  margin-top: 2.5rem;
+  --carousel-slide-width: clamp(13.5rem, 19vw, 17rem);
+  position: relative;
+  width: 100vw;
+  margin-top: clamp(2.5rem, 6vw, 4.5rem);
+  margin-inline: calc(50% - 50vw);
   overflow: hidden;
 }
 
@@ -933,6 +935,11 @@ html[lang="en"]
   overflow: hidden;
   direction: rtl;
   touch-action: pan-y;
+  cursor: grab;
+}
+
+.onboarding-carousel-viewport.is-dragging {
+  cursor: grabbing;
 }
 
 .onboarding-carousel-viewport:focus-visible {
@@ -944,13 +951,15 @@ html[lang="en"]
 .onboarding-carousel-track {
   display: flex;
   gap: 1.25rem;
-  transition: transform 320ms ease;
+  align-items: center;
+  user-select: none;
+  transition: transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
   will-change: transform;
 }
 
 .onboarding-carousel-slide {
   display: flex;
-  min-width: calc((100% - 2.5rem) / 3);
+  flex: 0 0 var(--carousel-slide-width);
   aspect-ratio: 459 / 851;
   align-items: center;
   justify-content: center;
@@ -962,14 +971,11 @@ html[lang="en"]
   width: 100%;
   height: 100%;
   object-fit: contain;
+  pointer-events: none;
 }
 
 .onboarding-carousel-controls {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  margin-top: 1.25rem;
-  direction: rtl;
+  display: contents;
 }
 
 .freesbe-rent-carousel {
@@ -1052,28 +1058,39 @@ html[lang="en"] .project-details .freesbe-conversation-copy p {
 }
 
 .freesbe-rent-carousel .onboarding-carousel-slide {
-  flex: 0 0 calc((100% - 2.5rem) / 3);
   aspect-ratio: 252 / 410;
 }
 
 .onboarding-carousel-buttons {
-  display: flex;
-  gap: 0.65rem;
+  display: contents;
 }
 
 .onboarding-carousel-buttons button {
+  position: absolute;
+  inset-block-start: 50%;
+  z-index: 2;
   display: grid;
-  width: 2.75rem;
-  height: 2.75rem;
+  width: 3rem;
+  height: 3rem;
   padding: 0;
   border: 1px solid #56816a;
   border-radius: 50%;
   place-items: center;
   color: #202522;
-  background: transparent;
+  background: rgba(245, 243, 238, 0.92);
+  box-shadow: 0 0.25rem 1rem rgba(32, 37, 34, 0.16);
   cursor: pointer;
   font: inherit;
   font-size: 1.35rem;
+  transform: translateY(-50%);
+}
+
+.onboarding-carousel-buttons [data-carousel-previous] {
+  inset-inline-start: max(1rem, calc(50vw - var(--carousel-slide-width) / 2 - 4rem));
+}
+
+.onboarding-carousel-buttons [data-carousel-next] {
+  inset-inline-end: max(1rem, calc(50vw - var(--carousel-slide-width) / 2 - 4rem));
 }
 
 .onboarding-carousel-buttons button:hover {
@@ -1091,13 +1108,6 @@ html[lang="en"] .project-details .freesbe-conversation-copy p {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .onboarding-carousel-slide {
-    min-width: calc((100% - 1.25rem) / 2);
-  }
-
-  .freesbe-rent-carousel .onboarding-carousel-slide {
-    flex-basis: calc((100% - 1.25rem) / 2);
-  }
 }
 
 @media (max-width: 40rem) {
@@ -1240,7 +1250,6 @@ html[lang="en"] .project-details .freesbe-conversation-copy p {
     .project-details
     :is(
       .project-freesbe-journey-image:not(.is-expanded),
-      .freesbe-rent-carousel,
       .freesbe-rent-video
     ) {
     --freesbe-journey-width: calc(100vw - 2.5rem);
@@ -1263,12 +1272,21 @@ html[lang="en"] .project-details .freesbe-conversation-copy p {
     width: calc(100vw - 2.5rem);
   }
 
-  .onboarding-carousel-slide {
-    min-width: 86%;
+  .onboarding-carousel {
+    --carousel-slide-width: 78vw;
   }
 
-  .freesbe-rent-carousel .onboarding-carousel-slide {
-    flex-basis: 86%;
+  .onboarding-carousel-buttons button {
+    width: 2.65rem;
+    height: 2.65rem;
+  }
+
+  .onboarding-carousel-buttons [data-carousel-previous] {
+    inset-inline-start: 0.75rem;
+  }
+
+  .onboarding-carousel-buttons [data-carousel-next] {
+    inset-inline-end: 0.75rem;
   }
 }
 
