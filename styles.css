@@ -1354,6 +1354,10 @@ html[lang="he"] :lang(en) {
   margin-top: 0;
 }
 
+.vanilla-project-details + .vanilla-carousel {
+  margin-top: clamp(3.5rem, 8vw, 7rem);
+}
+
 .vanilla-carousel .tambour-carousel-viewport {
   direction: ltr;
 }
