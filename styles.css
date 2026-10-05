@@ -1335,7 +1335,7 @@ html[lang="he"] :lang(en) {
 
 /* Vanilla Vida project */
 .vanilla-vida-card .project-card-preview-logo {
-  width: min(100%, 12rem);
+  width: min(100%, 18rem);
 }
 
 .vanilla-header-media {
