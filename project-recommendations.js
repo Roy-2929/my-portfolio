@@ -18,7 +18,7 @@ const portfolioProjects = [
   {
     id: "vanilla-vida",
     cardClass: "vanilla-vida-card",
-    logo: "vanilla_vida_logo.svg",
+    logo: "vanilla_vida_logo_dark.png",
     name: { en: "Vanilla Vida", he: "Vanilla Vida" },
     text: { en: "Lorem ipsum dolor sit amet.", he: "Lorem ipsum dolor sit amet." },
     pages: { en: "project-vanilla-vida.html", he: "project-vanilla-vida-he.html" },
