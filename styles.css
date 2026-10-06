@@ -48,6 +48,7 @@ body {
   top: 2rem;
   right: max(1.5rem, calc((100vw - 72rem) / 2));
   display: inline-flex;
+  min-width: 7.5rem;
   min-height: 2.75rem;
   align-items: center;
   justify-content: center;
@@ -74,8 +75,8 @@ body {
 
 .language-switcher {
   position: absolute;
-  inset-block-start: 2rem;
-  right: max(11rem, calc((100% - 72rem) / 2 + 9.5rem));
+  inset-block-start: 2.925rem;
+  right: max(12.5rem, calc((100% - 72rem) / 2 + 11rem));
   z-index: 1;
   display: flex;
   gap: 0.65rem;
@@ -83,6 +84,7 @@ body {
   color: #4e5b54;
   font-size: 0.9rem;
   font-weight: 650;
+  line-height: 1;
 }
 
 .language-switcher a {
@@ -436,14 +438,21 @@ h1 {
 .project-page {
   width: min(100% - 3rem, 72rem);
   margin-inline: auto;
-  padding-block: 3rem 8rem;
+  padding-block: 2rem 8rem;
+}
+
+.project-top-navigation {
+  display: grid;
+  min-height: 2.75rem;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  padding-right: 11rem;
+  direction: ltr;
 }
 
 .project-language-switcher {
   position: static;
   justify-content: flex-end;
-  padding-right: 9.5rem;
-  margin-bottom: 2.5rem;
 }
 
 .back-link {
@@ -1147,8 +1156,8 @@ html[lang="en"] .project-details .freesbe-conversation-copy p {
   }
 
   .language-switcher {
-    inset-block-start: 1.5rem;
-    right: 9.5rem;
+    inset-block-start: 1.925rem;
+    right: 10rem;
   }
 
   .email-contact-button {
@@ -1157,10 +1166,22 @@ html[lang="en"] .project-details .freesbe-conversation-copy p {
     padding-inline: 1.25rem;
   }
 
+  .project-top-navigation {
+    grid-template-areas:
+      ". language"
+      "back back";
+    grid-template-columns: 1fr auto;
+    gap: 1.5rem 0;
+    padding-right: 9rem;
+  }
+
   .project-language-switcher {
-    position: static;
-    padding-right: 8.5rem;
-    margin-bottom: 2rem;
+    grid-area: language;
+  }
+
+  .project-top-navigation .back-link {
+    grid-area: back;
+    justify-self: start;
   }
 
   .selected-work {
@@ -1177,7 +1198,7 @@ html[lang="en"] .project-details .freesbe-conversation-copy p {
 
   .project-page {
     width: min(100% - 2.5rem, 72rem);
-    padding-block: 2rem 5rem;
+    padding-block: 1rem 5rem;
   }
 
   .eyebrow {
