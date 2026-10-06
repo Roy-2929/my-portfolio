@@ -1511,6 +1511,27 @@ html[lang="he"] :lang(en) {
   outline-offset: 3px;
 }
 
+.vanilla-storytelling {
+  width: min(100%, 43.75rem);
+  margin: clamp(4rem, 9vw, 7rem) auto 0;
+  padding-inline: clamp(0rem, 3vw, 1.25rem);
+  text-align: center;
+}
+
+.vanilla-storytelling h2 {
+  margin: 0;
+  font-size: 26px;
+  letter-spacing: -0.025em;
+}
+
+.vanilla-storytelling p {
+  margin: 1rem 0 0;
+  color: #4e5b54;
+  font-size: 20px;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
 html[lang="he"] .project-details .freesbe-conversation-copy {
   width: min(calc(100vw - 3rem), 62.5rem);
   margin: clamp(3.5rem, 7vw, 5rem) auto 0;
