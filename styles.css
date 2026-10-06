@@ -1511,6 +1511,77 @@ html[lang="he"] :lang(en) {
   outline-offset: 3px;
 }
 
+.vanilla-storytelling {
+  width: min(100%, 43.75rem);
+  margin: clamp(4rem, 9vw, 7rem) auto 0;
+  padding-inline: clamp(0rem, 3vw, 1.25rem);
+  text-align: center;
+}
+
+.vanilla-storytelling h2 {
+  margin: 0;
+  font-size: 26px;
+  letter-spacing: -0.025em;
+}
+
+.vanilla-storytelling p {
+  margin: 1rem 0 0;
+  color: #4e5b54;
+  font-size: 20px;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+.vanilla-storytelling-videos {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2.08fr);
+  gap: clamp(1.5rem, 2.5vw, 2rem);
+  align-items: stretch;
+  margin-top: clamp(3rem, 7vw, 5rem);
+  direction: ltr;
+}
+
+.vanilla-storytelling-video {
+  position: relative;
+  min-width: 0;
+  overflow: hidden;
+  border-radius: 0.5rem;
+  background: #101010;
+}
+
+.vanilla-storytelling-video video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.vanilla-storytelling-media {
+  display: grid;
+  gap: clamp(1.5rem, 3vw, 2rem);
+  margin-top: clamp(1.5rem, 3vw, 2rem);
+}
+
+.vanilla-storytelling-banner,
+.vanilla-storytelling-feature-video {
+  position: relative;
+  width: 100%;
+  margin: 0;
+  overflow: hidden;
+  border-radius: 0.5rem;
+}
+
+.vanilla-storytelling-banner img,
+.vanilla-storytelling-feature-video video {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.vanilla-storytelling-feature-video {
+  background: #101010;
+}
+
 html[lang="he"] .project-details .freesbe-conversation-copy {
   width: min(calc(100vw - 3rem), 62.5rem);
   margin: clamp(3.5rem, 7vw, 5rem) auto 0;
@@ -1537,6 +1608,10 @@ html[lang="he"] .project-details .project-freesbe-journey-image:not(.is-expanded
 }
 
 @media (max-width: 40rem) {
+  .vanilla-storytelling-videos {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
   .vanilla-carousel .tambour-carousel-slide {
     height: clamp(15rem, 70vw, 26rem);
   }
