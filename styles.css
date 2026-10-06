@@ -1556,6 +1556,32 @@ html[lang="he"] :lang(en) {
   object-fit: contain;
 }
 
+.vanilla-storytelling-media {
+  display: grid;
+  gap: clamp(1.5rem, 3vw, 2rem);
+  margin-top: clamp(1.5rem, 3vw, 2rem);
+}
+
+.vanilla-storytelling-banner,
+.vanilla-storytelling-feature-video {
+  position: relative;
+  width: 100%;
+  margin: 0;
+  overflow: hidden;
+  border-radius: 0.5rem;
+}
+
+.vanilla-storytelling-banner img,
+.vanilla-storytelling-feature-video video {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.vanilla-storytelling-feature-video {
+  background: #101010;
+}
+
 html[lang="he"] .project-details .freesbe-conversation-copy {
   width: min(calc(100vw - 3rem), 62.5rem);
   margin: clamp(3.5rem, 7vw, 5rem) auto 0;
