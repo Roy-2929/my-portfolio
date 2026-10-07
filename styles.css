@@ -445,6 +445,8 @@ h1 {
   display: grid;
   min-height: 2.75rem;
   grid-template-columns: 1fr auto;
+  grid-template-areas: "back language";
+  gap: 1.5rem;
   align-items: center;
   padding-right: 11rem;
   direction: ltr;
@@ -452,15 +454,23 @@ h1 {
 
 .project-language-switcher {
   position: static;
+  grid-area: language;
   justify-content: flex-end;
 }
 
 .back-link {
   display: inline-block;
+  grid-area: back;
+  justify-self: start;
   color: #3d4541;
   font-size: 0.95rem;
   font-weight: 650;
   text-underline-offset: 0.3em;
+}
+
+html[dir="rtl"] .back-link {
+  direction: rtl;
+  text-align: left;
 }
 
 .back-link:hover {
@@ -723,6 +733,10 @@ h1 {
 .coeo-life-image {
   margin-top: clamp(4rem, 9vw, 7rem);
   margin-bottom: 0;
+}
+
+.coeo-carousel {
+  margin-top: clamp(3.5rem, 8vw, 7rem);
 }
 
 .project-onboarding-image {
@@ -1176,17 +1190,12 @@ html[lang="en"] .project-details .freesbe-conversation-copy p {
       ". language"
       "back back";
     grid-template-columns: 1fr auto;
-    gap: 1.5rem 0;
+    gap: 1.5rem;
     padding-right: 9rem;
   }
 
   .project-language-switcher {
     grid-area: language;
-  }
-
-  .project-top-navigation .back-link {
-    grid-area: back;
-    justify-self: start;
   }
 
   .selected-work {
@@ -1483,36 +1492,6 @@ html[lang="he"] :lang(en) {
 .media-video-toggle[data-paused] .video-play-icon { display: block; }
 .media-video-toggle:focus-visible {
   outline: 3px solid #fff;
-  outline-offset: 3px;
-}
-
-.vanilla-carousel-controls {
-  display: flex;
-  width: min(100% - 2.5rem, 72rem);
-  gap: 0.65rem;
-  justify-content: flex-end;
-  margin: 1.25rem auto 0;
-  direction: ltr;
-}
-
-.vanilla-carousel-controls button {
-  display: grid;
-  width: 2.75rem;
-  height: 2.75rem;
-  padding: 0;
-  border: 1px solid #56816a;
-  border-radius: 50%;
-  place-items: center;
-  color: #202522;
-  background: #f5f3ee;
-  cursor: pointer;
-  font: inherit;
-  font-size: 1.35rem;
-}
-
-.vanilla-carousel-controls button:hover { color: #fff; background: #56816a; }
-.vanilla-carousel-controls button:focus-visible {
-  outline: 3px solid rgba(86, 129, 106, 0.5);
   outline-offset: 3px;
 }
 
