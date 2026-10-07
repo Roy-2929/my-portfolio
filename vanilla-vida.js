@@ -43,12 +43,9 @@ if (headerMedia) {
   tryHeaderPlayback();
 }
 
-const carousel = document.querySelector("[data-vanilla-carousel]");
-if (carousel) {
+document.querySelectorAll("[data-project-carousel]").forEach((carousel) => {
   const viewport = carousel.querySelector("[data-carousel-viewport]");
   const track = carousel.querySelector("[data-carousel-track]");
-  const previous = carousel.querySelector("[data-carousel-previous]");
-  const next = carousel.querySelector("[data-carousel-next]");
   const slides = [...track.children];
   const cloneCount = Math.min(2, slides.length);
   let current = 0;
@@ -116,14 +113,17 @@ if (carousel) {
     if (reducedMotion.matches) normalize();
   };
 
-  previous.addEventListener("click", () => move(-1));
-  next.addEventListener("click", () => move(1));
   viewport.addEventListener("keydown", (event) => {
     if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
       event.preventDefault();
       move(event.key === "ArrowLeft" ? -1 : 1);
     }
   });
+  viewport.addEventListener("wheel", (event) => {
+    if (Math.abs(event.deltaX) <= Math.abs(event.deltaY)) return;
+    event.preventDefault();
+    move(event.deltaX > 0 ? 1 : -1);
+  }, { passive: false });
   viewport.addEventListener("pointerdown", (event) => {
     if (moving || event.button !== 0 || event.target.closest("button")) return;
     pointerId = event.pointerId;
@@ -162,4 +162,4 @@ if (carousel) {
   window.addEventListener("resize", () => render({ animate: false }));
   render({ animate: false });
   updateVideos();
-}
+});
