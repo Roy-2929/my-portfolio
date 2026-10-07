@@ -1609,3 +1609,18 @@ html[lang="he"] .project-details .project-freesbe-journey-image:not(.is-expanded
     width: var(--freesbe-journey-width);
   }
 }
+
+/* Keep the second Coeo gallery independent of the original gallery. */
+.coeo-carousel-secondary {
+  margin-top: clamp(3.5rem, 8vw, 7rem);
+}
+
+.coeo-carousel-secondary .tambour-carousel-slide {
+  flex-basis: 42vw;
+}
+
+@media (max-width: 40rem) {
+  .coeo-carousel-secondary .tambour-carousel-slide {
+    flex-basis: 82vw;
+  }
+}
