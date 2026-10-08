@@ -1634,3 +1634,23 @@ html[lang="he"] .project-details .project-freesbe-journey-image:not(.is-expanded
 .coeo-guest-journeys p {
   margin-top: 0;
 }
+
+/* Set the paragraph-to-gallery gap without inherited carousel spacing. */
+.coeo-guest-journeys {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.coeo-guest-journeys p {
+  margin-bottom: 0;
+}
+
+.coeo-guest-journeys + .coeo-before-after-carousel {
+  margin-top: 64px;
+}
+
+@media (max-width: 40rem) {
+  .coeo-guest-journeys + .coeo-before-after-carousel {
+    margin-top: 40px;
+  }
+}
