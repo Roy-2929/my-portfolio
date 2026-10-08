@@ -1624,3 +1624,13 @@ html[lang="he"] .project-details .project-freesbe-journey-image:not(.is-expanded
     flex-basis: 82vw;
   }
 }
+
+.coeo-guest-journeys {
+  margin-top: clamp(4rem, 9vw, 7rem);
+  border-top: 0;
+  padding-top: 0;
+}
+
+.coeo-guest-journeys p {
+  margin-top: 0;
+}
