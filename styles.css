@@ -1654,3 +1654,12 @@ html[lang="he"] .project-details .project-freesbe-journey-image:not(.is-expanded
     margin-top: 40px;
   }
 }
+
+.coeo-vibe-image {
+  margin-top: clamp(4rem, 9vw, 7rem);
+  margin-bottom: 0;
+}
+
+.coeo-guest-journeys h2 + p {
+  margin-top: 1rem;
+}
