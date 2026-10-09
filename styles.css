@@ -1663,3 +1663,20 @@ html[lang="he"] .project-details .project-freesbe-journey-image:not(.is-expanded
 .coeo-guest-journeys h2 + p {
   margin-top: 1rem;
 }
+
+/* Space the Elite Coffee assets using the shared project rhythm. */
+.elite-coffee-gallery-image,
+.elite-coffee-carousel {
+  margin-top: clamp(4rem, 9vw, 7rem);
+  margin-bottom: 0;
+}
+
+.elite-coffee-carousel .tambour-carousel-slide {
+  flex-basis: 30vw;
+}
+
+@media (max-width: 40rem) {
+  .elite-coffee-carousel .tambour-carousel-slide {
+    flex-basis: 65vw;
+  }
+}
