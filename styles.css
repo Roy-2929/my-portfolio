@@ -1680,3 +1680,40 @@ html[lang="he"] .project-details .project-freesbe-journey-image:not(.is-expanded
     flex-basis: 65vw;
   }
 }
+
+/* Reserve separate header rows for Hebrew contact and navigation controls. */
+html[lang="he"] .email-contact-button {
+  right: auto;
+  left: max(1.5rem, calc((100vw - 72rem) / 2));
+}
+
+html[lang="he"] .language-switcher:not(.project-language-switcher) {
+  right: max(1.5rem, calc((100vw - 72rem) / 2));
+}
+
+html[lang="he"] .intro {
+  padding-top: 8rem;
+}
+
+html[lang="he"] .project-top-navigation {
+  grid-template-areas:
+    ". language"
+    "back back";
+  grid-template-columns: minmax(9rem, 1fr) auto;
+  grid-template-rows: 2.75rem auto;
+  padding-right: 0;
+}
+
+@media (max-width: 40rem) {
+  html[lang="he"] .email-contact-button {
+    left: 1rem;
+  }
+
+  html[lang="he"] .language-switcher:not(.project-language-switcher) {
+    right: 1.25rem;
+  }
+
+  html[lang="he"] .intro {
+    padding-top: 7rem;
+  }
+}
