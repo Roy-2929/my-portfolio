@@ -1717,3 +1717,7 @@ html[lang="he"] .project-top-navigation {
     padding-top: 7rem;
   }
 }
+
+.cellcom-new-line-image {
+  margin-top: clamp(4rem, 9vw, 7rem);
+}
