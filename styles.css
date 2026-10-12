@@ -1721,3 +1721,24 @@ html[lang="he"] .project-top-navigation {
 .cellcom-new-line-image {
   margin-top: clamp(4rem, 9vw, 7rem);
 }
+
+.cellcom-persona-banner {
+  margin-top: clamp(4rem, 9vw, 7rem);
+}
+
+.cellcom-purple-section {
+  width: 100vw;
+  margin-inline: calc(50% - 50vw);
+  padding: 64px max(1.5rem, calc((100vw - 72rem) / 2));
+  background: #9530ff;
+}
+
+.cellcom-purple-section .project-hero-image {
+  margin: 0 auto;
+}
+
+@media (max-width: 40rem) {
+  .cellcom-purple-section {
+    padding: 40px 1.25rem;
+  }
+}
