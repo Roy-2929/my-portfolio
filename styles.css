@@ -1742,3 +1742,33 @@ html[lang="he"] .project-top-navigation {
     padding: 40px 1.25rem;
   }
 }
+
+/* Shared portfolio rhythm; intro typography and carousel internals stay intact. */
+:root {
+  --project-major-gap: 96px;
+  --project-media-gap: 64px;
+  --project-copy-gap: 16px;
+}
+.intro { min-height: 80svh; padding-top: 8rem; }
+.selected-work { padding-top: 48px; }
+.portfolio-project-page > :is(.project-hero-image, .vanilla-header-media) { margin-block: 0; }
+.portfolio-project-page > :is(.project-details, .vanilla-storytelling) { margin-top: 0; }
+.portfolio-project-page > .project-details { padding-top: var(--project-major-gap); }
+.portfolio-project-page > .coeo-guest-journeys { padding-top: var(--project-major-gap); }
+.portfolio-project-page > :is(.project-hero-image, .vanilla-header-media, .vanilla-carousel, .cellcom-purple-section) + :is(.project-hero-image, .vanilla-header-media, .vanilla-carousel, .cellcom-purple-section),
+.portfolio-project-page > .project-details + :is(.project-hero-image, .vanilla-header-media, .vanilla-carousel),
+.portfolio-project-page > .vanilla-storytelling + .vanilla-storytelling-videos { margin-top: var(--project-media-gap); }
+.portfolio-project-page > .vanilla-carousel + .vanilla-storytelling { margin-top: var(--project-major-gap); }
+.portfolio-project-page .project-details section + section { margin-top: 0; padding-top: var(--project-major-gap); }
+.portfolio-project-page .project-details h2 + p { margin-top: var(--project-copy-gap); }
+.portfolio-project-page .project-details section > .project-image { margin-top: var(--project-media-gap); margin-bottom: 0; }
+.portfolio-project-page .more-work { margin-top: 0; padding-top: var(--project-major-gap); }
+.full-size-image-link { position: relative; display: block; color: inherit; }
+.full-size-image-link:focus-visible { outline: 3px solid #56816a; outline-offset: 4px; }
+.full-size-image-icon { position: absolute; right: 12px; bottom: 12px; display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; background: rgba(255,255,255,.9); color: #202522; }
+.full-size-image-icon svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.5; }
+@media (max-width: 40rem) {
+  :root { --project-major-gap: 56px; --project-media-gap: 40px; }
+  .intro { min-height: 0; padding-block: 7rem 3rem; }
+  .selected-work { padding-top: 32px; }
+}
