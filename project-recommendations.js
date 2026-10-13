@@ -1,28 +1,106 @@
 const portfolioProjects = [
   {
-    id: "riseup",
-    cardClass: "riseup-card",
-    logo: "riseup_logo.png",
-    name: { en: "Riseup", he: "רייזאפ" },
-    text: { en: "Lorem ipsum dolor sit amet.", he: "Lorem ipsum dolor sit amet." },
-    pages: { en: "project-one.html", he: "project-one-he.html" },
+    "id": "riseup",
+    "cardClass": "riseup-card",
+    "logo": "riseup_logo.png",
+    "name": {
+      "en": "Riseup",
+      "he": "רייזאפ"
+    },
+    "text": {
+      "en": "How do you talk to people about their money with both empathy and resolve?",
+      "he": "איך מדברים עם אנשים על הכסף שלהם ברגישות ונחישות?"
+    },
+    "pages": {
+      "en": "project-one.html",
+      "he": "project-one-he.html"
+    }
   },
   {
-    id: "freesbe",
-    cardClass: "freesbe-card",
-    logo: "freesbe_logo.png",
-    name: { en: "freesbe", he: "freesbe" },
-    text: { en: "Lorem ipsum dolor sit amet.", he: "Lorem ipsum dolor sit amet." },
-    pages: { en: "project-freesbe.html", he: "project-freesbe-he.html" },
+    "id": "freesbe",
+    "cardClass": "freesbe-card",
+    "logo": "freesbe_logo.png",
+    "name": {
+      "en": "freesbe",
+      "he": "freesbe"
+    },
+    "text": {
+      "en": "When brand strategy evolves, the language has to evolve with it",
+      "he": "כשאסטרטגיית המותג מתעדכנת, גם השפה חייבת לעבור שינוי"
+    },
+    "pages": {
+      "en": "project-freesbe.html",
+      "he": "project-freesbe-he.html"
+    }
   },
   {
-    id: "vanilla-vida",
-    cardClass: "vanilla-vida-card",
-    logo: "vanilla_vida_logo_dark.png",
-    name: { en: "Vanilla Vida", he: "Vanilla Vida" },
-    text: { en: "Lorem ipsum dolor sit amet.", he: "Lorem ipsum dolor sit amet." },
-    pages: { en: "project-vanilla-vida.html", he: "project-vanilla-vida-he.html" },
+    "id": "vanilla-vida",
+    "cardClass": "vanilla-vida-card",
+    "logo": "vanilla_vida_logo_dark.png",
+    "name": {
+      "en": "Vanilla Vida",
+      "he": "Vanilla Vida"
+    },
+    "text": {
+      "en": "Scientific innovation and advanced technology, or romance and an appetizing story? Why not both?",
+      "he": "חדשנות מדעית וטכנולוגיה מתקדמת או רומנטיקה וסיפור מעורר תיאבון? למה לא שניהם?"
+    },
+    "pages": {
+      "en": "project-vanilla-vida.html",
+      "he": "project-vanilla-vida-he.html"
+    }
   },
+  {
+    "id": "coeo",
+    "cardClass": "coeo-card",
+    "logo": "coeo_hospitality_logonoBG.png",
+    "name": {
+      "en": "Coeo",
+      "he": "Coeo"
+    },
+    "text": {
+      "en": "Creating a sense of belonging before check-in",
+      "he": "ליצור תחושת שייכות, עוד לפני הצ׳ק־אין"
+    },
+    "pages": {
+      "en": "project-coeo.html",
+      "he": "project-coeo-he.html"
+    }
+  },
+  {
+    "id": "caffe-elit",
+    "cardClass": "caffe-elit-card",
+    "logo": "caffe_elit_logo.png",
+    "name": {
+      "en": "Elite Coffee",
+      "he": "קפה עלית"
+    },
+    "text": {
+      "en": "When a love of coffee meets the online shopping experience",
+      "he": "כשאהבה לקפה משתלבת בחוויית הקנייה אונליין"
+    },
+    "pages": {
+      "en": "project-elite-coffee.html",
+      "he": "project-elite-coffee-he.html"
+    }
+  },
+  {
+    "id": "cellcom",
+    "cardClass": "cellcom-card",
+    "logo": "cellcom_logo.png",
+    "name": {
+      "en": "Cellcom",
+      "he": "סלקום"
+    },
+    "text": {
+      "en": "How do you bring “Everything is possible” into everyday interactions without losing its ambition?",
+      "he": "איך מורידים את \"הכל אפשרי\" ליומיום, בלי לוותר על התנופה?"
+    },
+    "pages": {
+      "en": "project-cellcom.html",
+      "he": "project-cellcom-he.html"
+    }
+  }
 ];
 
 const currentProjectPages = {
@@ -32,6 +110,12 @@ const currentProjectPages = {
   "project-freesbe-he.html": "freesbe",
   "project-vanilla-vida.html": "vanilla-vida",
   "project-vanilla-vida-he.html": "vanilla-vida",
+  "project-coeo.html": "coeo",
+  "project-coeo-he.html": "coeo",
+  "project-elite-coffee.html": "caffe-elit",
+  "project-elite-coffee-he.html": "caffe-elit",
+  "project-cellcom.html": "cellcom",
+  "project-cellcom-he.html": "cellcom"
 };
 
 function shuffled(projects) {
@@ -57,7 +141,8 @@ function renderProjectRecommendations() {
 
   if (!currentProject || projects.length === 0) return;
 
-  const section = document.createElement("section");
+  const section = document.querySelector(".more-work") || document.createElement("section");
+  section.replaceChildren();
   section.className = "more-work";
   section.setAttribute("aria-labelledby", "more-work-title");
 
