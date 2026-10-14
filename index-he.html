@@ -12,7 +12,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="48x48" href="./favicon-48x48.png" />
   </head>
-  <body>
+  <body class="portfolio-homepage">
     <a class="email-contact-button" href="mailto:royst29@gmail.com">בואו נדבר</a>
     <main>
       <nav class="language-switcher" aria-label="בחירת שפה">
@@ -58,11 +58,10 @@
             href="project-freesbe-he.html"
             aria-label="צפייה בפרויקט freesbe"
           >
-            <img
-              class="project-card-preview-logo"
-              src="freesbe_logo.png"
-              alt="freesbe"
-            />
+            <picture class="homepage-animated-logo">
+              <source media="(prefers-reduced-motion: reduce)" srcset="freesbe_logo.png" />
+              <img class="project-card-preview-logo" src="freesbe-logo-moving.gif" alt="freesbe" />
+            </picture>
             <span class="project-card-preview-text"
               >כשאסטרטגיית המותג מתעדכנת, גם השפה חייבת לעבור שינוי</span
             >
@@ -114,11 +113,10 @@
             href="project-cellcom-he.html"
             aria-label="לפרויקט סלקום"
           >
-            <img
-              class="project-card-preview-logo"
-              src="cellcom_logo.png"
-              alt="Cellcom"
-            />
+            <picture class="homepage-animated-logo">
+              <source media="(prefers-reduced-motion: reduce)" srcset="cellcom_logo.png" />
+              <img class="project-card-preview-logo" src="cellcom-logo-moving.gif" alt="Cellcom" />
+            </picture>
             <span class="project-card-preview-text"
               >איך מורידים את "הכל אפשרי" ליומיום, בלי לוותר על התנופה?</span
             >

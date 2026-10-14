@@ -12,7 +12,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="48x48" href="./favicon-48x48.png" />
   </head>
-  <body>
+  <body class="portfolio-homepage">
     <a class="email-contact-button" href="mailto:royst29@gmail.com">Let’s talk</a>
     <main>
       <nav class="language-switcher" aria-label="Language selection">
@@ -57,11 +57,10 @@
             href="project-freesbe.html"
             aria-label="View the freesbe project"
           >
-            <img
-              class="project-card-preview-logo"
-              src="freesbe_logo.png"
-              alt="freesbe"
-            />
+            <picture class="homepage-animated-logo">
+              <source media="(prefers-reduced-motion: reduce)" srcset="freesbe_logo.png" />
+              <img class="project-card-preview-logo" src="freesbe-logo-moving.gif" alt="freesbe" />
+            </picture>
             <span class="project-card-preview-text"
               >When brand strategy evolves, the language has to evolve with it</span
             >
@@ -113,11 +112,10 @@
             href="project-cellcom.html"
             aria-label="View the Cellcom project"
           >
-            <img
-              class="project-card-preview-logo"
-              src="cellcom_logo.png"
-              alt="Cellcom"
-            />
+            <picture class="homepage-animated-logo">
+              <source media="(prefers-reduced-motion: reduce)" srcset="cellcom_logo.png" />
+              <img class="project-card-preview-logo" src="cellcom-logo-moving.gif" alt="Cellcom" />
+            </picture>
             <span class="project-card-preview-text"
               >How do you bring “Everything is possible” into everyday interactions without losing its ambition?</span
             >
