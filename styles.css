@@ -1833,3 +1833,38 @@ html[lang="he"] .project-top-navigation {
   .portfolio-homepage .statement { line-height: 1.65; margin-top: 24px; }
   .contact-links { grid-auto-rows: auto; gap: 18px; }
 }
+
+/* Give animated canvases an explicit centered layout inside their cards. */
+.portfolio-homepage .homepage-animated-logo {
+  display: grid;
+  width: 100%;
+  place-items: center;
+}
+.portfolio-homepage .homepage-animated-logo .project-card-preview-logo {
+  margin: 0 auto;
+  justify-self: center;
+  align-self: center;
+  width: min(100%, 16rem);
+  height: auto;
+}
+.portfolio-homepage .cellcom-card,
+.portfolio-homepage .cellcom-card:hover {
+  background: linear-gradient(#952eff, #932efd);
+}
+.portfolio-homepage .cellcom-card .project-card-preview-logo {
+  width: min(100%, 20rem);
+}
+@media (prefers-reduced-motion: reduce) {
+  .portfolio-homepage .cellcom-card { background: rgba(255, 255, 255, 0.28); }
+  .portfolio-homepage .cellcom-card:hover { background: rgba(255, 255, 255, 0.55); }
+  .portfolio-homepage .cellcom-card .project-card-preview-logo { width: min(100%, 9rem); }
+  .portfolio-homepage .freesbe-card .project-card-preview-logo { width: min(100%, 12.5rem); }
+}
+@media (max-width: 40rem) {
+  .portfolio-homepage .homepage-animated-logo .project-card-preview-logo {
+    max-height: calc((100vw - 2.5rem) / 1.8 - 56px);
+    max-width: 100%;
+    width: auto;
+    object-fit: contain;
+  }
+}
