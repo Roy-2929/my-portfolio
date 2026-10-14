@@ -1794,3 +1794,42 @@ html[lang="he"] .project-top-navigation {
     align-items: center;
   }
 }
+
+.homepage-animated-logo { display: contents; }
+.portfolio-homepage .cellcom-card .project-card-preview-logo,
+.portfolio-homepage .freesbe-card .project-card-preview-logo { width: min(100%, 12.5rem); }
+.contact-links .footer-heart {
+  height: 12px;
+  width: auto;
+  max-height: 12px;
+  min-height: 0;
+  min-width: 0;
+  padding: 0;
+  margin: 0;
+  align-self: center;
+  justify-self: center;
+  object-fit: contain;
+}
+@media (prefers-reduced-motion: reduce) {
+  .portfolio-homepage .cellcom-card .project-card-preview-logo { width: min(100%, 9rem); }
+}
+@media (max-width: 40rem) {
+  .email-contact-button { position: absolute; }
+  .portfolio-homepage .project-grid { gap: 30px; }
+  .portfolio-homepage .project-grid .project-card {
+    min-height: 0;
+    height: auto;
+    padding: 28px;
+    aspect-ratio: 1.8;
+    flex-direction: row;
+    gap: 0;
+  }
+  .portfolio-homepage .project-grid .project-card-preview-text { display: none; }
+  .portfolio-homepage .project-grid .project-card-preview::before { display: none; }
+  .portfolio-homepage .project-grid .project-card-preview-logo { opacity: 1; max-height: 100%; object-fit: contain; }
+  .portfolio-homepage .project-grid .project-card-link:hover { transform: none; }
+  .portfolio-homepage .intro h1 { font-size: clamp(3.5rem, 14vw, 4rem); }
+  .portfolio-homepage .selected-work h2 { font-size: 2.5rem; }
+  .portfolio-homepage .statement { line-height: 1.65; margin-top: 24px; }
+  .contact-links { grid-auto-rows: auto; gap: 18px; }
+}
