@@ -1868,3 +1868,42 @@ html[lang="he"] .project-top-navigation {
     object-fit: contain;
   }
 }
+
+/* Mobile homepage controls and intro gaps, without stacked old spacing. */
+@media (max-width: 40rem) {
+  .portfolio-homepage .email-contact-button {
+    top: calc(24px + env(safe-area-inset-top, 0px));
+    right: calc(22px + env(safe-area-inset-right, 0px));
+    left: auto;
+  }
+  .portfolio-homepage .language-switcher {
+    inset-block-start: calc(24px + env(safe-area-inset-top, 0px));
+    left: calc(22px + env(safe-area-inset-left, 0px));
+    right: auto;
+    min-height: 44px;
+  }
+  .portfolio-homepage .language-switcher a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+  html[lang="he"] .portfolio-homepage .email-contact-button {
+    left: calc(22px + env(safe-area-inset-left, 0px));
+    right: auto;
+  }
+  html[lang="he"] .portfolio-homepage .language-switcher:not(.project-language-switcher) {
+    right: calc(22px + env(safe-area-inset-right, 0px));
+    left: auto;
+  }
+  .portfolio-homepage .intro {
+    padding-top: calc(116px + env(safe-area-inset-top, 0px));
+    min-height: 0;
+  }
+  .portfolio-homepage .eyebrow { margin-bottom: 32px; }
+  .portfolio-homepage .statement { margin-top: 32px; }
+}
+@media (max-width: 40rem) {
+  html[lang="he"] .portfolio-homepage .intro {
+    padding-top: calc(116px + env(safe-area-inset-top, 0px));
+  }
+}
