@@ -1959,3 +1959,6 @@ html[lang="he"] .project-top-navigation {
     margin: 0;
   }
 }
+
+/* Separate project recommendations from the shared footer in normal flow. */
+.portfolio-project-page { padding-bottom: var(--project-major-gap); }
