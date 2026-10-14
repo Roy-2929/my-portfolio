@@ -1907,3 +1907,55 @@ html[lang="he"] .project-top-navigation {
     padding-top: calc(116px + env(safe-area-inset-top, 0px));
   }
 }
+
+/* Freesbe's complete canvas fits the existing card without logo-size limits. */
+.portfolio-homepage .freesbe-card,
+.portfolio-homepage .freesbe-card:hover {
+  background: linear-gradient(#fffdff, #fdfdfd);
+}
+.portfolio-homepage .freesbe-card .homepage-animated-logo {
+  position: absolute;
+  inset: 0;
+  width: auto;
+  height: auto;
+  overflow: hidden;
+  border-radius: inherit;
+}
+.portfolio-homepage .freesbe-card .homepage-animated-logo .project-card-preview-logo {
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  object-fit: contain;
+}
+@media (prefers-reduced-motion: reduce) {
+  .portfolio-homepage .freesbe-card .homepage-animated-logo {
+    position: static;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+  }
+  .portfolio-homepage .freesbe-card .homepage-animated-logo .project-card-preview-logo {
+    width: min(100%, 12.5rem);
+    height: auto;
+  }
+}
+@media (max-width: 40rem) {
+  .portfolio-homepage .intro h1 { font-size: clamp(3.85rem, 15.4vw, 4.4rem); }
+  .portfolio-homepage .selected-work h2 { font-size: 24px; font-weight: 500; }
+}
+@media (max-width: 40rem) and (prefers-reduced-motion: reduce) {
+  .portfolio-homepage .freesbe-card .homepage-animated-logo .project-card-preview-logo {
+    width: auto;
+    max-width: 100%;
+    max-height: calc((100vw - 2.5rem) / 1.8 - 56px);
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .portfolio-homepage .freesbe-card .homepage-animated-logo { display: block; }
+  .portfolio-homepage .freesbe-card .homepage-animated-logo .project-card-preview-logo {
+    position: absolute;
+    inset: 0;
+    margin: 0;
+  }
+}
