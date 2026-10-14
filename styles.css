@@ -1772,3 +1772,25 @@ html[lang="he"] .project-top-navigation {
   .intro { min-height: 0; padding-block: 7rem 3rem; }
   .selected-work { padding-top: 32px; }
 }
+
+/* Equal tracks keep the decorative mark midway between link centers. */
+.contact-links {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+  justify-items: center;
+  align-items: center;
+}
+.footer-heart {
+  display: block;
+  width: 26px;
+  height: auto;
+  pointer-events: none;
+}
+@media (max-width: 40rem) {
+  .contact-links {
+    grid-template-columns: 1fr;
+    grid-auto-rows: 44px;
+    align-items: center;
+  }
+}
