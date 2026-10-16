@@ -1962,3 +1962,37 @@ html[lang="he"] .project-top-navigation {
 
 /* Separate project recommendations from the shared footer in normal flow. */
 .portfolio-project-page { padding-bottom: var(--project-major-gap); }
+
+.next-project {
+  margin-top: var(--project-major-gap);
+  padding-top: var(--project-media-gap);
+  border-top: 1px solid rgba(86, 129, 106, 0.3);
+  text-align: start;
+}
+.next-project-label {
+  margin: 0 0 20px;
+  color: #4e5b54;
+  font-size: 1rem;
+  font-weight: 500;
+}
+.next-project h2 { margin: 0; }
+.next-project-link {
+  display: inline-flex;
+  max-width: 100%;
+  align-items: center;
+  gap: 1.5rem;
+  color: #202522;
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 650;
+  line-height: 1.15;
+  text-decoration: none;
+  transition: color 160ms ease;
+}
+.next-project-link bdi { min-width: 0; overflow-wrap: anywhere; }
+.next-project-link:hover { color: #56816a; }
+.next-project-link:focus-visible { outline: 3px solid #56816a; outline-offset: 8px; border-radius: 2px; }
+.next-project-arrow { width: .65em; height: .65em; flex: 0 0 .65em; fill: none; stroke: currentColor; stroke-width: 1.5; }
+html[lang="he"] .next-project-arrow { transform: rotate(180deg); }
+@media (max-width: 40rem) {
+  .next-project-link { gap: 1rem; }
+}
